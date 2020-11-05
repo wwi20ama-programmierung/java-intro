@@ -2,7 +2,8 @@
 
 ## Literatur und Guides
 - [Offizielle Java-Dokumentation](https://docs.oracle.com/en/java/javase/15/)
-    - [z. B. ArrayList](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/ArrayList.html)
+    - [z. B. `ArrayList`](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/ArrayList.html)
+    - [z. B. `Scanner`](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Scanner.html)
 - [Java ist auch eine Insel (Buch, kostenlos)](http://openbook.rheinwerk-verlag.de/javainsel/)
 - [Java auf W3Schools](https://www.w3schools.com/java/default.asp)
 - [Java-Kurs auf codecademy](https://www.codecademy.com/learn/learn-java)
