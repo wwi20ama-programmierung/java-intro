@@ -16,5 +16,5 @@
 ## Konfiguration in der .replit-Datei
 ```
 language = "java10"
-run = "cd <Ordnername> && java Main"
+run = "cd <Ordnername> && java JavaIntro"
 ```
