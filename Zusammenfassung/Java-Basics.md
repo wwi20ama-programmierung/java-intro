@@ -39,6 +39,8 @@ Die JVM muss für die Zielplattform verfügbar sowie auf dem Zielsystem installi
 Dadurch, dass durch die bereits vorher erfolgte Kompilierung bereits eine Syntaxüberprüfung und Codeoptimierung stattgefunden hat, muss diese nicht mehr während dem Interpretieren von der JVM ausgeführt werden.
 Dies beschleunigt die Ausführung des Programms, sodass eine ähnliche Performance zu Compilersprachen erreicht werden kann. 
 
+![Python vs. Java](includes/Python%20vs.%20Java.png)
+
 Neben der Art, wie das Programm für die Ausführung vorbereitet und schlussendlich ausgeführt wird, ist Java im Gegensatz zu Python auch streng objektorientiert ausgelegt (siehe [Objektorientierungs-Basics](OOP-Basics.md)).
 Zudem ist Java statisch typisiert, d.h. wir müssen bei jeder Variable schon bei der Deklaration (Definition) mitteilen, welchen Typ (z. B. `int` oder `String`) diese besitzen soll.
 Java überprüft diesen Typ dann bei jeder Änderung der Variable und gibt eine Fehlermeldung aus, wenn man beispielweise einen Integerwert wie `6` ohne Konvertierungsschritt in einer `String`-Variable speichern möchte (siehe Abschnitt [Typen und Typisierung](#typen-und-typisierung)). 
@@ -104,7 +106,7 @@ Bei Python kann es sein, dass nach der Initialisierung der Variable `eineZahl = 
 Dies würde zu einem Fehler bei der Laufzeit führen und bei nicht korrekter Behandlung dieser `Exception` das Programm zu Abstürzen bringen.
 
 ### Basistypen
-Java unterstützt einige sogenannte Basistypen:
+Java unterstützt einige Basistypen (auch primitive Datentypen genannt):
 
 |  Datentyp | Größe | Wertebereich | Verwendung | Standardwert | Beispiel |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -152,13 +154,13 @@ for(int i = 0; i < einWeiteresIntArray.length; i++) { // alle Elemente des Array
 
 In vielen Fällen ist die erwartete bzw. maximale Anzahl an Werten, die in einem Array gespeichert werden sollen, nicht bei der Entwicklung des Programms bekannt.
 Beispielsweise muss ein Onlinespiel zwei Spieler, aber auch 1000 Spieler unterstützen und speichern können.
-Ein Ansatz wäre es, das Array der Spieler (hier vereinfacht als Spieler-Ids vom Typ `int`) bereits mit einer sehr großen Anzahl an Elementen zu initialisieren:
+Ein Ansatz wäre es, das Array der Spieler (hier vereinfacht als Spieler-IDs vom Typ `int`) bereits mit einer sehr großen Anzahl an Elementen zu initialisieren:
 ```java
-int[] spielerIds = new int[20000];
+int[] spielerIDs = new int[20000];
 ```
 Dies bringt allerdings zwei Nachteile mit sich: 
 1. Vielleicht gibt es auch Fälle, in denen mehr als 20.000 Spieler beitreten können.
-Das Programm würde dann (ohne weitere Fehlerbehandlung) abstürzen, da z. B. der Index `spielerIds[20001]` `OutOfBounds` ist, also für dieses Array nicht definiert wurde.
+Das Programm würde dann (ohne weitere Fehlerbehandlung) abstürzen, da z. B. der Index `spielerIDs[20001]` `OutOfBounds` ist, also für dieses Array nicht definiert wurde.
 2. Sollten bei einem Onlinespiel doch nur weniger Spieler beitreten, muss der Speicherbereich für das 20.000-Elemente-Array trotzdem reserviert werden.
 Das ist nicht besonders effizient.
 
@@ -173,7 +175,7 @@ Für `int` ist das `Integer`, für `double` `Double` und für die anderen Basist
 
 ```java
 ArrayList<String> dynamischesStringArray = new ArrayList<>();
-ArrayList<Integer> dynamischesStringArray = new ArrayList<>();
+ArrayList<Integer> dynamischesIntegerArray = new ArrayList<>();
 ```
 
 Bei einer `ArrayList` handelt es sich um ein Objekt, d.h. wir können verschiedene Methoden verwenden, um Elemente hinzuzufügen oder zu löschen, die Anzahl der Elemente ausgebenen zu lassen usw.
@@ -230,7 +232,7 @@ if(einString == null) {
 ### `for`-Schleife
 Eine `for`-Schleife ist eine sogenannte "kopfgesteuerte" Schleife, da die Überprüfung des Abbruchkriteriums _vor_ jeder Iteration stattfindet.
 Die Schleife besteht aus drei Teilen:
-1. Zählervariable: z. B. `int i = 0;`
+1. Initialisierung der Zählervariable: z. B. `int i = 0;`
 2. Abbruchbedingung: z. B. `i < 10;`
 3. Nach jeder Iteration ausgeführte Anweisung: z.B. `i++;` oder `i = i + 4;` für Viererschritte
 
@@ -246,7 +248,8 @@ for(int i = 0; i < 10; i++) {
 Alternativ kann man die drei oben genannten Teile auch teilweise oder komplett in den Schleifenrumpf verschieben:
 
 ```java
-int i = 0; // wir starten bei 0
+int i = 0; // wir starten bei i = 0
+
 for( ; ;) {
     if(i == 10) {
         break; // wenn der Wert von i 10 erreicht, brechen wir ab
@@ -262,8 +265,9 @@ Diese Schreibweise ist allerdings im Vergleich zu "zentralen" Pflege der drei "S
 
 
 ### `for`-Schleife (vereinfacht)
-Für Manche Objekte wie auch `ArrayList` bietend ie Möglichkeit, eine vereinfachte Form der `for´-Schleife zu schreiben.
-Dazu muss keine Zählervariable definiert und manuell hochgezählt werden, sondern die Schleife wird automatisch für jedes Element, dass sich in dem `ArrayList`-Objekt befindet, ausgegeben:
+Für Manche Objekte wie auch `ArrayList` bieten die Möglichkeit, eine vereinfachte Form der `for`-Schleife zu schreiben.
+Dazu muss keine Zählervariable definiert und manuell hochgezählt werden, sondern die Schleife wird automatisch für jedes Element, dass sich in dem `ArrayList`-Objekt befindet, ausgegeben.
+In anderen Sprachen wird diese Art von Schleife auch als `foreach`-Schleife bezeichnet, da sie "für jedes Element des Arrays" ausgeführt wird.
 
 ```java
 ArrayList<String> eineArrayList = new ArrayList<>();
@@ -294,9 +298,9 @@ for(int i = 0; i < eineArrayList.size(); i++) {
 
 ### `while`-Schleife
 Die `while`-Schleife ist bereits aus Python bekannt.
-Sie ist ebenfalls wie die `for`-Schleife "kopfgesteuert", allerdings gibt man hier nicht die Abbruch-, sondern die "Weiterlaufbedingung" an und muss sich um die eventuell notwendige Inkrementierung einer Zählervariable selbst im Schleifenrumpf kümmern.
+Sie ist ebenfalls wie die `for`-Schleife "kopfgesteuert", allerdings gibt man hier nicht die Abbruch-, sondern die "Weiterlaufbedingung" an und muss sich um die eventuell notwendige Inkrementierung einer Zählervariable im Schleifenrumpf selbst kümmern.
 
-Die `for`-Schleife im Abschnitt [`for`-Schleife](#for-schleife) sieht als `while´-Schleife in etwa so aus:
+Die `for`-Schleife im Abschnitt [`for`-Schleife](#for-schleife) sieht als `while´-Schleife so aus:
 ```java
 int i = 0; // Zählervariable mit 0 initialisieren
 
@@ -322,7 +326,7 @@ while(webserver.clientRequestExists() == false) {
 Natürlich muss an anderer Stelle definiert werden, wann `clientRequestExists()` statt `false` `true` zurückgibt, ansonsten wird aus der Schleife eine Endlosschleife, d.h. sie endet nie und das Programm hängt sich auf.
 
 ### `do-while`-Schleife
-Im Gegensatz zur `for`- und zur `while`-Schleife ist die `do-while`-Schleife "fußgesteuert", d.h. sie läuft _immer_ mindestens einmla durch, da die Abbruchbedingung erst nach Ende jeder Iteration überprüft wird.
+Im Gegensatz zur `for`- und zur `while`-Schleife ist die `do-while`-Schleife "fußgesteuert", d.h. sie läuft _immer_ mindestens einmal durch, da die Abbruchbedingung erst nach Ende jeder Iteration überprüft wird.
 
 ```java
 int i = 0;
@@ -332,7 +336,7 @@ do {
 } while(i > 0);
 ```
 
-In diesem Fall würde eine "kopfgesteuerte" `for`- oder `while`-Schleife gar erst nicht ausgeführt, da die Abbruchbedingung `i > 0` bereits zu Beginn erfüllt ist, da `i` `0` ist.
+In diesem Fall würde eine "kopfgesteuerte" `for`- oder `while`-Schleife gar nicht erst ausgeführt, da die Abbruchbedingung `i > 0` bereits zu Beginn erfüllt ist, da `i == 0` ist.
 Folglich würde auch keine Ausgabe an der Konsole erscheinen.
 
 Im Gegensatz dazu würde das folgende Beispiel den Text fünfmal an der Konsole ausgeben:
@@ -377,7 +381,7 @@ Das `String`-Array `args` wird von der JVM mit dem beim Ausführen des Programms
 Beispielsweise lassen sich so bei jedem Programmstart andere Optionen mitgeben:
 
 ```bash
-java MeinDateiauflistprogramm verzeichnis=Bilder
+java MeinDateiAuflistProgramm verzeichnis=Bilder
 ```
 
 Mit dem Programmaufruf wäre der Wert von `args[0]` nun `verzeichnis=Bilder`.
@@ -385,17 +389,17 @@ Dies könnte unser Programm entsprechend interpretieren und alle Dateien im Verz
 Möchte ich das Programm für den Ordner `Filme` benutzen muss ich nicht den Programmcode anpassen, sondern übergebe dem Programm beim Aufruf einfach folgendes:
 
 ```
-java MainDateiauflistprogramm verzeichnis=Filme
+java MeinDateiAuflistProgramm verzeichnis=Filme
 ```
 
 ## `package` und `import`
 Gerade bei größeren Projekten, an den viele Programmierende parallel arbeiten, wird der Code schnell unübersichtlich.
 Zudem werden in Java Projekte in Modulen organisiert, um beispielsweise Namensdopplungen bei Klassendefinitionen zu vermeiden.
-Deshalb weist man über die Anweisung `package <package name>`, also z. B. `package vorlesung.beispiele.basics;` zu Beginn einer jeden (Klassen-)Datei die jeweiligen Artifikate wie Klassen usw. einem Paket ( ´package`) zu.
+Deshalb weist man über die Anweisung `package <package name>`, also z. B. `package vorlesung.beispiele.basics;` zu Beginn einer jeden (Klassen-)Datei die jeweiligen Artifikate wie Klassen usw. einem Paket (`package`) zu.
 Die durch `.` separierten Bestandteile des Paketnamens werden als Ordnerhierarchie angesehen.
 
 Sollen nun in einem zweiten Paket `vorlesung.beispiele.advanced` Klassen vom Paket `vorlesung.beispiele.basics` importiert werden, so kann dafür die `import`-Anweisung genutzt werden.
-Entweder gibt man direkt den Namen der zu importierenden Klasse an, beispielsweise `import vorlesung.beispiele.basics.EineKlasse;` oder man importiert über das Widlcard-Symbol `*` alle Klassen aus dem Paket (`import vorlesung.beispiele.basics.*;`).
+Entweder gibt man direkt den Namen der zu importierenden Klasse an, beispielsweise `import vorlesung.beispiele.basics.EineKlasse;` oder man importiert über das Wildcard-Symbol `*` alle Klassen aus dem Paket (`import vorlesung.beispiele.basics.*;`).
 Die darüber importierten Klassen bzw. Module aus anderen Paketen können dann auch im eigenen Paket genutzt werden:
 
 **`BasicProgramm.java`**                                                                                                      
