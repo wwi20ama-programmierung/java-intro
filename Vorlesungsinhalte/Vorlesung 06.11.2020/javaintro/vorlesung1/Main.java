@@ -2,19 +2,36 @@ package javaintro.vorlesung1; // wir gruppieren alle für dieses Beispiel verwen
 
 import java.util.ArrayList;
 
-class Main {
+class Main { // Konvention: Klassenname = Dateiname
+
+    // Die main-Methode wird immer von Java beim Start des Programms ausgeführt.
+    // Hierin können alle weiteren Aktionen gestartet werden.
     public static void main(String[] args) {
-        /*
-         * Grundlagen
-         */
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // Grundlagen
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         // Java ist statisch typisiert, im Gegensatz zu Python, das dynamisch typisiert ist
         // -> wir müssen Java mitteilen, welchen Typ es bei einer Variable, als Rückgabewert usw. zu erwarten hat
-        String text; // Deklaration: "Sagt" Java, dass es eine Variable vom Typ der Klasse "String" gibt. Hat noch keinen Wert!
-        text = "Hello World"; // Initialisierung: "Sagt" Java, dass die Variable "text" den Wert "Hello World" erhält.
+        String text; // Deklaration: "Sagt" Java, dass es eine Variable vom Typ der Klasse "String" gibt. Hat noch keinen Wert bzw. keine Referenz!
+        text = "Hello World"; // Initialisierung: "Sagt" Java, dass die Variable "text" den Wert der Referenz auf ein Objekt der Klasse String mit dem Wert "Hello World" erhält.
         String text2 = "Hello World 2"; // Deklaration und Initialisierung kann man auch in einer Zeile vornehmen
         // text = 1; // Das geht nicht, weil 1 ein Integer ist, Java aber einen String für die Variable "text" erwartet!
 
+        System.out.println("Der Wert von text ist: " + text); // Ausgabe: "Hello World""
+
+        text = null; // möchte man den Wert innerhalb der Variable text "löschen", kann man ihn mit "null" überschreiben
+        // -> null bedeutet, dass die Variable zwar initialisiert ist, aber auf kein Objekt verweist
+
+        System.out.println("Der Wert von text ist: " + text); // Ausgabe: null
+
+        System.out.println(); // leere Zeile als Abstandshalter
+
+        ////////////////////////////////////////////////////////////////////////////////////////
         // Basistypen
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         byte einByte = 123; // Werte: -128 bis 127
         short kurzeGanzzahl = -12345; // Werte: -32,768 bis 32,767
         int ganzzahl = 9382; // Werte: -2,147,483,648 bis 2,147,483,647
@@ -29,15 +46,18 @@ class Main {
 
         System.out.println("Wert von Variable zeichenkette" + zeichenkette); // gibt "Hello World" an der Konsole aus
 
-        /*
-         * Arrays (Listen)
-         */
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // Arrays (Listen)
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         int[] integerArray = new int[5]; // ein "statisches" Array, das Platz für genau 5 Elemente (Index 0 bis 4) besitzt
         integerArray[1] = 5; // an der zweiten Stelle des Arrays speichern wir den Wert 5
         System.out.println("Länge des Arrays integerArray: " + integerArray.length); // erwartete Ausgabe: 5 (da 5 Elemente "Platz" im Array haben)
 
         int[] integerArrayMitWerten = {1, 2, 5, 8, 12, 42}; // ein "statisches" Array, das Platz für genau 6 Elemente (Index 0 bis 5) besitzt und mit den Elementen 1, 2, 5, 8, 12, 42 initialisiert wurde
         System.out.println("Länge des Arrays integerArrayMitWerten: " + integerArrayMitWerten.length); // erwartete Ausgabe: 6 (da Array mit 6 Elementen initialisiert wurde)
+
+        String[][][] mehrdimensionalesArray = new String[4][4][2]; // auch mehrdimensionale Arrays sind möglich, hier ein dreidimensionales Array mit 4 x 4 x 2 Elementen
 
         // Auch hier ist nicht immer im Vorhinein (also während der Programmierung) bekannt, wie viele Elemente das Array enthalten soll
         ArrayList<String> zeichenkettenArray = new ArrayList<>(); // mit Hilfe der Java-Klasse "ArrayList" lässt sich ein dynamisches Array erstellen
@@ -48,9 +68,26 @@ class Main {
         zeichenkettenArray.remove("B"); // entfernt "B" aus dem Array
         // -> dadurch lässt sich die "Dynamik" einer Python-Liste erzielen, d.h. zur Programmlaufzeit können (theoretisch) beliebig viele Elemente zur ArrayList hinzugefügrt werden
 
-        /*
-         * Beispiel: Modellierung von Spielern
-         */
+        System.out.println(); // leere Zeile als Abstandshalter
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // Beispiel: Schleifen (alle Parameter an der Konsole ausgeben)
+        // Hinweis: Programm an der Konsole mit "javac Main.java" kompilieren,
+        //          anschließend mit "java Main arg1 arg2 abc def" usw. ausführen
+        ////////////////////////////////////////////////////////////////////////////////////////
+
+        if (args.length != 0) {
+            for (int i = 0; i < args.length; i++) {
+                System.out.println(i + ". Parameter für das Programm: " + args[i]); // z. B. "1. Parameter für das Programm: abc"
+            }
+        } else {
+            System.out.println("Es gibt keine Argumente (args)");
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // Beispiel: Modellierung von Spielern
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         // Wir haben in den Python-Vorlesungen pro "Eigenschaft" bzw. Attribut eines Spielers eine eigene Variable angelegt
         String player1_name = "Max";
         String player2_name = "Moritz";
@@ -147,9 +184,10 @@ class Main {
 
         System.out.println(); // leere Zeile als Abstandshalter
 
-        /*
-         * Weiteres Beispiel für die Vorteile von z. B. ArrayLists im Vergleich zu den "statischen" Array über die []-Notation
-         */
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // Weiteres Beispiel für die Vorteile von z. B. ArrayLists im Vergleich zu den "statischen" Array über die []-Notation
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         ArrayList<Spieler> spielerListe = new ArrayList<>(); // wir initialisieren eine leere ArrayList (.size() -> 0)
         for (int i = 0; i < 100; i++) { // diese Schleife läuft 100 mal durch (i = 0 bis i = 99)
             // in jedem Durchlauf wird der ArrayList ein weiteres Spieler-Objekt hinzugefügt mit folgenden Attributwerten:
@@ -163,5 +201,26 @@ class Main {
 
         System.out.println("Es wurden " + spielerListe.size() + " Spieler-Objekte in der ArrayList spielerListe abgespeichert."); // Ausgabe: 100, da wir 100 Elemente zur ArrayList hinzugefügt haben
         System.out.println("Die Punktzahl vom Spieler an Index 50 der spielerListe ist: " + spielerListe.get(50).score); // das Spieler-Objekt am Index 50 der ArrayList besitzt den Attributwert "50" für die Punktzahl
+
+        System.out.println(); // leere Zeile als Abstandshalter
+
+        ////////////////////////////////////////////////////////////////////////////////////////
+        // Weiteres Beispiel: Primzahltest
+        ////////////////////////////////////////////////////////////////////////////////////////
+        int zuPruefendeZahl = 6; // zur Vereinfachung lesen wir den Wert nicht von der Konsole aus, sondern setzen ihn hier
+        if (zuPruefendeZahl <= 1) {
+            System.out.println("Zahl ist <= 1");
+            return; // hier müssen wir nicht weitermachen, wir beenden die Methode main
+        } else {
+            for (int i = 2; i < zuPruefendeZahl; i++) { // in Python haben wir das als "range(2,zuPruefendeZahl)" geschrieben, dadurch hat i die Werte [2, 3, ..., x - 1]
+                if (zuPruefendeZahl % i == 0) {
+                    System.out.println("Keine Primzahl, da teilbar durch " + i);
+                    return; // wir beenden die Methode "main"
+                }
+            }
+
+            // wenn wir bis hierhin noch nicht "returned" haben, dann ist die zuPruefendeZahl eine Primzahl
+            System.out.println(zuPruefendeZahl + " ist eine Primzahl");
+        }
     }
 }
