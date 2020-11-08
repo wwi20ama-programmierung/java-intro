@@ -201,7 +201,7 @@ Im Unterschied zu den Basistypen kann ein Objekt auch "leer" sein, also keine Re
 In Java hat dies dann den "Wert" `null`.
 
 Beispielsweise bedeutet die Anweisung `String einString = null;`, dass wir eine neue Variable vom Typ/der Klasse `String` deklarieren möchten, der allerdings keine Speicherreferenz aufweist.
-Sobald wir diesen dann mit einem anderen Wert, z. B. `einString = "Hello World";` überschreiben, wird im Speicher ein Objekt der Klasse `String` angelegt und die Referenz (`Pointer`) darauf in der Variable `einString` gespeichert.
+Sobald wir diesen dann mit einem anderen Wert, z. B. `einString = "Hello World";` überschreiben, wird im Speicher ein Objekt der Klasse `String` angelegt und die Referenz darauf in der Variable `einString` gespeichert.
 
 Im Unterschied zur `String einString;`, was einer Deklaration entspricht, ist `einString` mit der Zuweisung von `null` bereits initialisiert.
 Die folgende Anweisung erzeut einen Fehler, da `einString` noch nicht initialisiert wurde:
