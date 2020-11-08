@@ -33,9 +33,9 @@ class Main { // Konvention: Klassenname = Dateiname
         ////////////////////////////////////////////////////////////////////////////////////////
 
         byte einByte = 123; // Werte: -128 bis 127
-        short kurzeGanzzahl = -12345; // Werte: -32,768 bis 32,767
-        int ganzzahl = 9382; // Werte: -2,147,483,648 bis 2,147,483,647
-        long grosseGanzzahl = 28387827871L; // Werte: -9,223,372,036,854,775,808 bis 9,223,372,036,854,775,807 ("L" am Ende beachten!)
+        short kurzeGanzzahl = -12345; // Werte: -32.768 bis 32.767
+        int ganzzahl = 9382; // Werte: -2.147.483.648 bis 2.147.483.647
+        long grosseGanzzahl = 28387827871L; // Werte: -9.223.372.036.854.775.808 bis 9.223.372.036.854.775.807 ("L" am Ende beachten!)
         float kommazahl = 4.5f; // einfache Genauigkeit, 6 bis 7 Nachkommastellen ("f" am Ende beachten!)
         double genauereKommazahl = 4.5; // doppelte Genauigkeit, 15 Nachkommastellen
         boolean wahrheitswert = true; // oder "false"
