@@ -38,7 +38,7 @@ Viel kompakter und damit strukturierter, weniger fehleranfällig und erweiterbar
 Diese "Vorlage" können wir dann nutzen, um beliebig viele Spieler mit diesen Attributen und Methoden, allerdings anderen Attributswerten, zu erstellen.
 
 ## Konzept
-Das Prinzip, in einer "Vorlage" oder "Blaupause" zu definieren, welche Attribute und Methoden eine Entität wie ein `Spieler` besitzt, existiert und nennt sich **Objektorientierung**.
+Das Prinzip, in einer "Vorlage" oder "Blaupause" zu definieren, welche Attribute und Methoden eine Entität wie ein `Spieler` besitzt, existiert und nennt sich **Objektorientierung** bzw. Objektorientierte Programmierung und wird häufig als Gegensatz zur (zuvor erläuterten) prozeduralen Programmierung gesehen.
 Alles lässt sich als ein Objekt modellieren, unabhängig davon, ob es ein physisches Objekt (z. B. ein Fahrzeug) oder eine konzeptionelle Entität (z. B. eine Regel oder ein Kurs) ist, da sich für jedes Objekt die Attribute, Methoden und Beziehungen zu anderen Objekten definieren lassen, die zum "Funktionieren" bzw. Abbilden des Objekts notwendig sind.
 
 Wichtig ist: Es gibt immer verschiedene Wege zum Ziel und deshalb nicht "die" richtige Modellierung zur Realisierung eines Programms bzw. zum Lösen eines Problems.
