@@ -97,7 +97,7 @@ if(zahl < 5) {
 
 ## Typen und Typisierung
 ### Konzept
-Python ist `dynamisch` typisiert, wohingehen Java `statisch` typisiert ist.
+Python ist `dynamisch` typisiert, wohingegen Java `statisch` typisiert ist.
 Das bedeutet, dass sich Python den Typ einer Variable zur Laufzeit selbst "erschließt", während man diesen Java bereits im Programmcode mitteilen muss.
 
 **Python:**
@@ -223,7 +223,7 @@ Beispielsweise bedeutet die Anweisung `String einString = null;`, dass wir eine 
 Sobald wir diesen dann mit einem anderen Wert, z. B. `einString = "Hello World";` überschreiben, wird im Speicher ein Objekt der Klasse `String` angelegt und die Referenz darauf in der Variable `einString` gespeichert.
 
 Im Unterschied zur `String einString;`, was einer Deklaration entspricht, ist `einString` mit der Zuweisung von `null` bereits initialisiert.
-Die folgende Anweisung erzeut einen Fehler, da `einString` noch nicht initialisiert wurde:
+Die folgende Anweisung erzeugt einen Fehler, da `einString` noch nicht initialisiert wurde:
 
 ```java
 String einString;
@@ -317,7 +317,7 @@ for(int i = 0; i < eineArrayList.size(); i++) {
 
 ### `while`-Schleife
 Die `while`-Schleife ist bereits aus Python bekannt.
-Sie ist ebenfalls wie die `for`-Schleife "kopfgesteuert", allerdings gibt man hier nicht die Abbruch-, sondern die "Weiterlaufbedingung" an und muss sich um die eventuell notwendige Inkrementierung einer Zählervariable im Schleifenrumpf selbst kümmern.
+Sie ist ebenfalls wie die `for`-Schleife "kopfgesteuert", allerdings gibt man hier nicht die Abbruch-, sondern die "Weiterlaufbedingung" an und muss sich um die eventuell notwendige Zählervariable im Schleifenrumpf selbst kümmern.
 
 Die `for`-Schleife im Abschnitt [`for`-Schleife](#for-schleife) sieht als `while´-Schleife so aus:
 ```java
@@ -414,7 +414,7 @@ java MeinDateiAuflistProgramm verzeichnis=Filme
 ## `package` und `import`
 Gerade bei größeren Projekten, an den viele Programmierende parallel arbeiten, wird der Code schnell unübersichtlich.
 Zudem werden in Java Projekte in Modulen organisiert, um beispielsweise Namensdopplungen bei Klassendefinitionen zu vermeiden.
-Deshalb weist man über die Anweisung `package <package name>`, also z. B. `package vorlesung.beispiele.basics;` zu Beginn einer jeden (Klassen-)Datei die jeweiligen Artifikate wie Klassen usw. einem Paket (`package`) zu.
+Deshalb weist man über die Anweisung `package <package name>`, also z. B. `package vorlesung.beispiele.basics;` zu Beginn einer jeden (Klassen-)Datei die jeweiligen Artifakte wie Klassen usw. einem Paket (`package`) zu.
 Die durch `.` separierten Bestandteile des Paketnamens werden als Ordnerhierarchie angesehen.
 
 Sollen nun in einem zweiten Paket `vorlesung.beispiele.advanced` Klassen vom Paket `vorlesung.beispiele.basics` importiert werden, so kann dafür die `import`-Anweisung genutzt werden.
