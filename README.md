@@ -7,6 +7,7 @@
     - [06.11.2020](Vorlesungsinhalte/Vorlesung%2006.11.2020) (Java- und Objektorientierungs-Basics)
 - Beispiele und Aufgaben
     - [Kalender](Vorlesungsinhalte/Kalender)
+    - [Onlineshop](Vorlesungsinhalte/Onlineshop)
 - Exkurse
     - [Strings vs. Basistypen](Exkurse/Strings%20vs.%20Basistypen.md) (Frage vom 07.11.2020)
     
