@@ -1,4 +1,19 @@
 # Objektorientierte Programmierung (OOP)
+## Inhaltsverzeichnis
+- [Bisherige Programmstruktur](#bisherige-programmstruktur)
+- [Konzept](#konzept)
+    - [Vorteile](#vorteile) (in Arbeit)
+- [Visualisierung](#visualisierung)
+- [Klassen in Java](#klassen-in-java)
+    - [`class`](#class)
+    - [Attribute](#attribute)
+    - [Methoden](#methoden)
+    - [`this`-Referenz](#this-referenz)
+    - [Vergleiche von Objekten](#vergleiche-von-objekten)
+- [Datenkapselung (Encapsulation)](#datenkapselung-encapsulation) (in Arbeit)
+    - [Modifikatoren](#modifikatoren) (in Arbeit)
+    - [Getter und Setter](#getter-und-setter) (in Arbeit)
+
 ## Bisherige Programmstruktur
 In den Python-Vorlesungen haben wir pro "Eigenschaft" bzw. Attribut eines Spielers eine eigene Variable angelegt.
 Dadurch, dass wir beispielsweise ein Spiel bereits im Vorhinein auf zwei Spieler eingeschränkt haben, wussten wir, welche Variablen wir wann evaluieren müssen.

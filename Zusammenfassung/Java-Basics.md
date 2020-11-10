@@ -1,9 +1,30 @@
 # Java-Basics
+## Inhaltsverzeichnis
+- [Einführung](#einfhrung)
+    - [Warum Java?](#warum-java)
+    - [Java vs. Python](#java-vs-python)
+- [Syntax](#syntax)
+- [Typen und Typisierung](#typen-und-typisierung)
+    - [Konzept](#konzept)
+    - [Basistypen](#basistypen)
+    - [Arrays](#arrays)
+    - [`null`](#null)
+- [Schleifen](#schleifen)
+    - [`for`-Schleife](#for-schleife)
+    - [`for`-Schleife (vereinfacht)](#for-schleife-vereinfacht)
+    - [`while`-Schleife](#while-schleife)
+    - [`do-while`-Schleife](#do-while-schleife)
+- [Methoden](#methoden)
+    - [`void` und Rückgabewerte](#void-und-rckgabewerte)
+    - [`main`-Methode](#main-methode)
+- [`package` und `import`](#package-und-import)
+    
+    
 ## Einführung
 ### Warum Java?
 Java ist vielseitig einsetzbar und wird von einem Großteil der (IT-)Unternehmen eingesetzt (siehe z. B. [Analyse auf stackshare](https://stackshare.io/java)).
 
-Neben vielen "klassichen" PC-Applikationen sind auch Spiele (z. B. `Minecraft`), Backends für Webservices, mobile Apps (der Großteil der Android-Apps), Blu-ray-Player, Drucker usw. mit Java implementiert bzw. nutzen Java.
+Neben vielen "klassischen" PC-Applikationen sind auch Spiele (z. B. `Minecraft`), Backends für Webservices, mobile Apps (der Großteil der Android-Apps), Blu-ray-Player, Drucker usw. mit Java implementiert bzw. nutzen Java.
 
 Im Rahmen der Vorlesung soll das Konzept der Objektorientierten Programmierung (OOP) vermittelt werden.
 Dies unterstützen auch viele andere Programmiersprachen, allerdings ist es in Java strikt implementiert und die Konzepte lassen sich entsprechend einfach erläutern. 
@@ -194,8 +215,6 @@ dynamischesStringArray.remove("Hello World"); // entfernt den String "Hello Worl
 dynamischesStringArray.size(); // gibt die Anzahl der Elemente, die momentan in der ArrayList gespeichert sind, zurück
 ``` 
 
-### Klassen 
-
 ### `null`
 Im Unterschied zu den Basistypen kann ein Objekt auch "leer" sein, also keine Referenz auf eine Speicheradresse aufweisen.
 In Java hat dies dann den "Wert" `null`.
@@ -366,7 +385,7 @@ Dabei können alle Basistypen wie beispielsweise `int`, aber auch Klassen wie `S
 Soll die Methode (wie auch die `main`) keinen Wert zurückgeben, muss `void` angegeben werden, was im Englischen etwa `nichtig` oder `leer` bedeutet.
 
 
-## `main`-Methode
+### `main`-Methode
 Die `main`-Methode ist eine statische Methode, d.h. sie ist für die Klasse definiert und damit für alle Objekte der Klasse gleich.
 Jede Java-Applikation benötigt eine statische Methode mit dem Namen `main` und folgender Signatur:
 
