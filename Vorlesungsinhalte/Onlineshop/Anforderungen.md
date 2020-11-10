@@ -11,7 +11,7 @@ Er kann auch den gesamten Warenkorb leeren.
 Jeder Artikel ist nur in einer begrenzten Anzahl verfügbar.
 Beim Besuch des Warenkorbs wird dem Kunde der Gesamtwert der darin enthaltenen Artikel angezeigt.
 
-Beim Bezahlen im Warenkorb wird der "ausstehende Rechnungsbetrag" des Kundens um den Wert des Warenkorbs erhöht.
+Beim Bezahlen im Warenkorb wird der "ausstehende Rechnungsbetrag" des Kunden um den Wert des Warenkorbs erhöht.
 
 ## Hinweise
 - Die Verwendung des Onlineshops kann in der `main`-Methode einer `Main`-Klasse "simuliert" werden, indem nacheinander die entsprechenden Objekte erstellt und die Methoden aufgerufen werden (Ausnahme siehe [Fortgeschrittene Erweiterung](#fortgeschrittene-erweiterung)).
@@ -55,6 +55,17 @@ Geben Sie "k" für "kaufen" oder "e" für "beenden" ein.
 >> e
 
 Vielen Dank für Ihren Einkauf im Onlineshop! Bis zum nächsten Mal!
+```
+
+Über ein Objekt der Klasse [`Scanner`](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Scanner.html) lassen sich Benutzereingaben einlesen.
+Beispielsweise liest die Methode `.next()` die Benutzereingabe als `String` ein, während `nextInt()` die Eingabe (falls möglich) als `int` konvertiert.
+
+**Beispiel:**
+```java
+Scanner consoleInput = new Scanner(System.in); // System.in = von Konsole einlesen
+System.out.println("Was möchten Sie tun?");
+String eingabeString = consoleInput.next();
+int eingabeInt = consoleInput.nextInt();
 ```
 
 ## Tipps zum Vorgehen

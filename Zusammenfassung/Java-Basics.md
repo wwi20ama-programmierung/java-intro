@@ -316,9 +316,9 @@ In anderen Worten kann die Anzahl der Iterationen im Vorhinein noch nicht bestim
 
 (Stark vereinfachtes) Beispiel eines Webservers, der wartet, bis eine Anfrage von einem Client eingeht: 
 ```java
-Webserver webserver = new Webserver();
+Webserver webserverObject = new Webserver();
 
-while(webserver.clientRequestExists() == false) {
+while(webserverObject.clientRequestExists() == false) {
     System.out.println("Warten auf Client-Request...");
 }
 ```
