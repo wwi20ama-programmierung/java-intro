@@ -20,6 +20,6 @@ class Main {
     Stapel ablagestapel = new Stapel();
 
     // TODO: Weiteren Code aus dem Python-Projekt übertragen und adaptieren
-    //  (https://github.com/wwi20ama-programmierung/python-intro/blob/main/Vorlesungsinhalte/2020-10-23_MauMau/maumau.py)
+    // (siehe https://github.com/wwi20ama-programmierung/python-intro/blob/main/Vorlesungsinhalte/2020-10-23_MauMau/maumau.py)
   }
 }
