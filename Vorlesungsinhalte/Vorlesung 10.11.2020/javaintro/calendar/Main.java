@@ -53,12 +53,21 @@ class Main {
     System.out.println(); // leere Zeile als Abstandshalter
 
     // Testen der Time-Objekte
+    Time.selfTest(); // da "static" muss die Methode über die Klasse "Time" und nicht über ein Objekt der Klasse "Time" aufgerufen werden!
     Time time1 = new Time(2, 34);
     Time time2 = new Time(13, 1);
+    Time time3 = new Time(0, 15);
 
     System.out.println("time1 (24h): " + time1.getIn24hFormat()); // 2:34
     System.out.println("time2 (24h): " + time2.getIn24hFormat()); // 13:1
+    System.out.println("time3 (24h): " + time3.getIn24hFormat()); // 0:15
+
+    System.out.println("time1 (12h): " + time1.getIn12hFormat()); // 2:34 a. m.
+    System.out.println("time2 (12h): " + time2.getIn12hFormat()); // 1:1 p. m.
+    System.out.println("time3 (12h): " + time3.getIn12hFormat()); // 12:15 a. m.
     // 1 = 00000000000000...01 (bei int werden führende Nullen nicht angezeigt/gespeichert)
+
+    System.out.println(time3.getIn24hFormat()); // 0:15
 
     System.out.println(); // leere Zeile als Abstandshalter
 
