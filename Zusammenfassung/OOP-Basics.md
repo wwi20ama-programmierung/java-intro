@@ -11,7 +11,8 @@
     - [Vergleiche von Objekten](#vergleiche-von-objekten)
 - [Datenkapselung (Encapsulation)](#datenkapselung-encapsulation)
     - [Zugriffsmodifikatoren ](#zugriffsmodifikatoren)
-    - [Getter und Setter](#getter-und-setter)
+    - [Getter](#getter)
+    - [Setter](#setter)
 
 ## Bisherige Programmstruktur
 In den Python-Vorlesungen haben wir pro "Eigenschaft" bzw. Attribut eines Spielers eine eigene Variable angelegt.
@@ -287,7 +288,7 @@ class Product {
 
 Die andere Person, die unsere Klasse nun zur Erzeugung neuer `Product`-Objekte verwendet, bekommt beim Setzen der Attribute eine Fehlermeldung angezeigt, da diese nicht von außen sichtbar und modifizierbar sind, beispielsweise:
 
-```sh
+```
 Main.java:8: error: price has private access in Product
 product.price = 100.0;
        ^
