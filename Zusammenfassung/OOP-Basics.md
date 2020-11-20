@@ -341,7 +341,7 @@ public class Customer {
     private String lastname;
     
     // Konstruktor
-    public Product(String firstname, String lastname) {
+    public Customer(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
