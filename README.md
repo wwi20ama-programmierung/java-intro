@@ -11,7 +11,7 @@
 - Beispiele und Aufgaben
     - [Kalender](Vorlesungsinhalte/Vorlesung%2010.11.2020)
     - [Onlineshop](Vorlesungsinhalte/Vorlesung%2013.11.2020)
-    - [Mau-Mau](Vorlesungsinhalte/MauMau)
+    - [Mau-Mau](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro/maumau)
     - [Onlineshop mit Vererbung](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro/onlineshop/vererbung)
 - Exkurse
     - [Strings vs. Basistypen](Exkurse/Strings%20vs.%20Basistypen.md) (Frage vom 07.11.2020)
