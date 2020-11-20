@@ -7,10 +7,12 @@
     - [06.11.2020](Vorlesungsinhalte/Vorlesung%2006.11.2020) (Java- und Objektorientierungs-Basics)
     - [10.11.2020](Vorlesungsinhalte/Vorlesung%2010.11.2020) (Kalender-Beispiel)
     - [13.11.2020](Vorlesungsinhalte/Vorlesung%2013.11.2020) (Onlineshop-Beispiel)
+    - [20.11.2020](Vorlesungsinhalte/Vorlesung%2020.11.2020) (Mau Mau und Onlineshop-Vererbungs-Beispiel)
 - Beispiele und Aufgaben
     - [Kalender](Vorlesungsinhalte/Vorlesung%2010.11.2020)
     - [Onlineshop](Vorlesungsinhalte/Vorlesung%2013.11.2020)
     - [Mau-Mau](Vorlesungsinhalte/MauMau)
+    - [Onlineshop mit Vererbung](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro/onlineshop/vererbung)
 - Exkurse
     - [Strings vs. Basistypen](Exkurse/Strings%20vs.%20Basistypen.md) (Frage vom 07.11.2020)
     
