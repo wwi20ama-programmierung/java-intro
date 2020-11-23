@@ -8,11 +8,13 @@
     - [10.11.2020](Vorlesungsinhalte/Vorlesung%2010.11.2020) (Kalender-Beispiel)
     - [13.11.2020](Vorlesungsinhalte/Vorlesung%2013.11.2020) (Onlineshop-Beispiel)
     - [20.11.2020](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro) (Mau Mau und Onlineshop-Vererbungs-Beispiel)
+    - [23.11.2020](Vorlesungsinhalte/Vorlesung%2023.11.2020/javaintro) (Mau Mau mit KI, statische und dynamische Polymorphie)
 - Beispiele und Aufgaben
     - [Kalender](Vorlesungsinhalte/Vorlesung%2010.11.2020)
     - [Onlineshop](Vorlesungsinhalte/Vorlesung%2013.11.2020)
     - [Mau-Mau](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro/maumau)
     - [Onlineshop mit Vererbung](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro/onlineshop/vererbung)
+    - [Mau-Mau mit KI](Vorlesungsinhalte/Vorlesung%2023.11.2020/javaintro/maumau/ki)
 - Exkurse
     - [Strings vs. Basistypen](Exkurse/Strings%20vs.%20Basistypen.md) (Frage vom 07.11.2020)
     
