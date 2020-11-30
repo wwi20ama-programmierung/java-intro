@@ -18,6 +18,8 @@ public class Geschenk {
         } else {
             this.schleifenFarbe = "rosa";
         }
+
+        System.out.println("Ein neues Geschenk für " + wuenschendesKind.getName() + " mit einer Schleife in " + this.schleifenFarbe + " wurde gezaubert!");
     }
 
     public Wunsch getWunsch() {

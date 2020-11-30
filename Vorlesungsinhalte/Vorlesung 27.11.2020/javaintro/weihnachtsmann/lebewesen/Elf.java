@@ -7,7 +7,8 @@ public class Elf extends Lebewesen {
     private final int ENERGIE = 100;
     private final int ENERGIEVERBRAUCH = 5;
 
-    public Elf() {
+    public Elf(String name) {
+        this.name = name;
         this.energie = ENERGIE;
     }
 
@@ -22,6 +23,10 @@ public class Elf extends Lebewesen {
     public void bewegen() {
         System.out.println("Der Elf wuselt herum!");
         this.energie -= ENERGIEVERBRAUCH;
+    }
+
+    public void fuettern(Rentier rentier) {
+        rentier.regenerieren();
     }
 
     public Paket verpacken(Geschenk geschenk) {

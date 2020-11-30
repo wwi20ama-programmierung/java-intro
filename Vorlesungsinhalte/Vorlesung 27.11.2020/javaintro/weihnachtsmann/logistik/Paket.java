@@ -29,6 +29,8 @@ public class Paket {
                 this.gewicht = 5;
                 break;
         }
+
+        System.out.println("Das Paket für das Geschenk " + geschenk.getWunsch().getArt() + " wiegt " + this.gewicht + " kg.");
     }
 
     public int getGewicht() {

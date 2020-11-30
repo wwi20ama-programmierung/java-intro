@@ -26,12 +26,24 @@ public class Kind {
         return this.geschlecht;
     }
 
+    public boolean isBrav() {
+        return this.isBrav;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public ArrayList<Wunsch> getWuensche() {
+        return this.wuensche;
+    }
+
     public void wuenschen(String name, String art) {
-        if (this.isBrav) {
-            Wunsch neuerWunsch = new Wunsch(name, art, this); // Wir "verknüpfen" das neue Wunsch-Objekt mit dem Kind-Objekt, für das wir "wuenschen" aufrufen ("this")
-            this.wuensche.add(neuerWunsch);
-        } else {
-            System.out.println(this.name + " war nicht brav und darf sich deshalb nichts vom Weihnachtsmann wünschen!");
-        }
+        Wunsch neuerWunsch = new Wunsch(name, art, this); // Wir "verknüpfen" das neue Wunsch-Objekt mit dem Kind-Objekt, für das wir "wuenschen" aufrufen ("this")
+        this.wuensche.add(neuerWunsch);
+    }
+
+    public void wunschlisteSenden(Weihnachtsmann weihnachtsmann) {
+        weihnachtsmann.wunschlisteEmpfangen(this);
     }
 }

@@ -16,6 +16,12 @@ public class Schlitten {
         this.lieferliste = lieferliste;
     }
 
+    // Wenn wir noch keine Lieferliste festlegen möchten, können wir erst einmal einen Schlitten nur mit Fahrer und Rentieren initialisieren ...
+    public Schlitten(Elf fahrer, Rentier[] rentiere) {
+        this.fahrer = fahrer;
+        this.rentiere = rentiere;
+    }
+
     // ... oder wir geben (alle 6) Rentiere direkt bei der Initialisierung eines Schlittens mit (-> siehe statische Polymorphie)
     public Schlitten(Elf fahrer, Rentier[] rentiere, Lieferliste lieferliste) {
         this(fahrer, lieferliste); // wir rufen den anderen Konstruktor (mit weniger Parametern) auf -> doppelten Code vermeiden
@@ -39,6 +45,10 @@ public class Schlitten {
         System.out.println("Es sind bereits alle sechs Rentiere eingespannt!");
     }
 
+    public void setLieferliste(Lieferliste lieferliste) {
+        this.lieferliste = lieferliste;
+    }
+
     public void fliegen() {
         if (this.rentiere.length < 6) {
             System.out.println("Es sind nur " + this.rentiere.length + " von 6 Rentieren eingespannt. Der Schlitten kann nicht abheben!");
@@ -55,5 +65,7 @@ public class Schlitten {
             Rentier rentierAmIndex = rentiere[i];
             rentierAmIndex.bewegen();
         }
+
+        System.out.println(); // Abstandshalter
     }
 }

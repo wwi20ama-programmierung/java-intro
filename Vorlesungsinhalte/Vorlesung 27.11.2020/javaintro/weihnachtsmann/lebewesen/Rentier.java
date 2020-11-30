@@ -1,7 +1,7 @@
 package javaintro.weihnachtsmann.lebewesen;
 
 public class Rentier extends Lebewesen {
-    private final int ENERGIE = 1000;
+    private final int ENERGIE = 200;
     private final int ENERGIEVERBRAUCH = 50;
 
     public Rentier(String name) {
@@ -18,7 +18,11 @@ public class Rentier extends Lebewesen {
 
     @Override
     public void bewegen() {
-        System.out.println("Das Rentier " + this.name +  " rennt und fliegt.");
-        this.energie -= ENERGIEVERBRAUCH;
+        if (this.energie > ENERGIEVERBRAUCH) {
+            System.out.println("Das Rentier " + this.name + " rennt und fliegt.");
+            this.energie -= ENERGIEVERBRAUCH;
+        } else {
+            System.out.println("Das Rentier " + this.name + " braucht eine Pause!");
+        }
     }
 }

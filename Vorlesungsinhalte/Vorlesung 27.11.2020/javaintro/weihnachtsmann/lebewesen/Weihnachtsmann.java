@@ -6,9 +6,12 @@ import javaintro.weihnachtsmann.geschenke.Geschenk;
 import javaintro.weihnachtsmann.geschenke.Schuh;
 import javaintro.weihnachtsmann.geschenke.Spiel;
 
+import java.util.ArrayList;
+
 public class Weihnachtsmann extends Lebewesen {
     private final int ENERGIE = 150;
     private final int ENERGIEVERBRAUCH = 10;
+    private ArrayList<Wunsch> wuensche = new ArrayList<>();
 
     public Weihnachtsmann() {
         this.name = "Weihnachtsmann"; // Der Weihnachtsmann hat immer den gleichen Namen
@@ -28,14 +31,26 @@ public class Weihnachtsmann extends Lebewesen {
         this.energie -= ENERGIEVERBRAUCH;
     }
 
+    public void wunschlisteEmpfangen(Kind kind) {
+        if (kind.isBrav()) {
+            this.wuensche.addAll(kind.getWuensche()); // alle Wünsche der Merkliste des Weihnachtsmanns hinzufügen
+        } else {
+            System.out.println(kind.getName() + " war nicht brav und darf sich deshalb nichts vom Weihnachtsmann wünschen!");
+        }
+    }
+
+    public ArrayList<Wunsch> getAlleWuensche() {
+        return this.wuensche;
+    }
+
     public Geschenk verzaubern(Wunsch wunsch) {
 
         switch (wunsch.getArt()) {
-            case "javaintro.weihnachtsmann.geschenke.Auto":
+            case "Auto":
                 return new Auto(wunsch);
-            case "javaintro.weihnachtsmann.geschenke.Schuh":
+            case "Schuh":
                 return new Schuh(wunsch);
-            case "javaintro.weihnachtsmann.geschenke.Spiel":
+            case "Spiel":
                 return new Spiel(wunsch);
             // case "Kleidungsstück":
             //  return new Kleidungsstueck(wunsch);
