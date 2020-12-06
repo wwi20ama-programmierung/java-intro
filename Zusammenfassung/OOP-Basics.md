@@ -18,7 +18,7 @@
     - [Abstrakte Klassen und Methoden (`abstract`)](#abstrakte-klassen-und-methoden-abstract)
     - [Schnittstellen (`interface`)](#schnittstellen-interface)
 - [Polymorphie](#polymorphie)
-    - [Überladung (statische Polymorphie)](#berladung-statische-polymorphie)
+    - [Überladung (statische Polymorphie)](#überladung-statische-polymorphie)
     - [Dynamische Polymorphie](#dynamische-polymorphie)
     
 
