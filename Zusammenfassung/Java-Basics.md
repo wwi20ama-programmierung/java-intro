@@ -10,6 +10,7 @@
 - [Typen und Typisierung](#typen-und-typisierung)
     - [Konzept](#konzept)
     - [Basistypen](#basistypen)
+    - [Typumwandlung (Casting)](#typumwandlung-typecast)
     - [Arrays](#arrays)
     - [`null`](#null)
     - [Konstanten](#konstanten)
@@ -61,13 +62,13 @@ Java verfolgt einen hybriden Ansatz und kombiniert die Vorteile von Compiler und
 Dabei wird über den Compiler (Programm `javac`) der Quellcode der `.java`-Dateien vor der Ausführung des Programms in einen sogenannten Bytecode (`.class`-Dateien) kompiliert.
 Dieser ist vereinfacht gesagt der Maschinencode für die Java Virtual Machine (JVM) und kann nur von dieser interpretiert werden.
 Die JVM muss für die Zielplattform verfügbar sowie auf dem Zielsystem installiert sein und interpretiert zur Laufzeit des Programms (über das Programm `java`) den Bytecode und übersetzt ihn in den Maschinencode der jeweiligen Plattform. 
-Dadurch, dass durch die bereits vorher erfolgte Kompilierung bereits eine Syntaxüberprüfung und Codeoptimierung stattgefunden hat, muss diese nicht mehr während dem Interpretieren von der JVM ausgeführt werden.
+Dadurch, dass durch die bereits vorher erfolgte Kompilierung bereits eine Syntaxüberprüfung und Codeoptimierung stattgefunden hat, muss diese nicht mehr während des Interpretierens von der JVM ausgeführt werden.
 Dies beschleunigt die Ausführung des Programms, sodass eine ähnliche Performance zu Compilersprachen erreicht werden kann. 
 
 ![Python vs. Java](includes/Python%20vs.%20Java.png)
 
 Neben der Art, wie das Programm für die Ausführung vorbereitet und schlussendlich ausgeführt wird, ist Java im Gegensatz zu Python auch streng objektorientiert ausgelegt (siehe [Objektorientierungs-Basics](OOP-Basics.md)).
-Zudem ist Java statisch typisiert, d.h. wir müssen bei jeder Variable schon bei der Deklaration (Definition) mitteilen, welchen Typ (z. B. `int` oder `String`) diese besitzen soll.
+Zudem ist Java statisch typisiert, d.h. wir müssen bei jeder Variablen schon bei der Deklaration (Definition) mitteilen, welchen Typ (z. B. `int` oder `String`) diese besitzen soll.
 Java überprüft diesen Typ dann bei jeder Änderung der Variable und gibt eine Fehlermeldung aus, wenn man beispielweise einen Integerwert wie `6` ohne Konvertierungsschritt in einer `String`-Variable speichern möchte (siehe Abschnitt [Typen und Typisierung](#typen-und-typisierung)). 
 
 ## Syntax
@@ -267,7 +268,7 @@ Mehr Informationen zur Syntax dieser finden Sie in der offiziellen Java-Dokument
 ## Typen und Typisierung
 ### Konzept
 Python ist `dynamisch` typisiert, wohingegen Java `statisch` typisiert ist.
-Das bedeutet, dass sich Python den Typ einer Variable zur Laufzeit selbst "erschließt", während man diesen Java bereits im Programmcode mitteilen muss.
+Das bedeutet, dass sich Python den Typ einer Variablen zur Laufzeit selbst "erschließt", während man diesen Java bereits im Programmcode mitteilen muss.
 
 **Python:**
 ```python
@@ -288,7 +289,7 @@ Java "weiß", dass hier nur ein Integer drin gespeichert werden darf.
 ```java
 eineVariable = "Hello World;
 ```
-Java zeigt nun eine Fehlermeldung an, da die Zeichenkette `Hello World` nicht in einer Variable vom Typ `int` (Ganzzahl) gespeichert werden darf.
+Java zeigt nun eine Fehlermeldung an, da die Zeichenkette `Hello World` nicht in einer Variablen des Typs `int` (Ganzzahl) gespeichert werden darf.
 
 Was erst einmal nach mehr Aufwand und Komplexität aussieht, hat in der Praxis viele Vorteile:
 Als Entwickler kann ich beispielsweise zu einem späteren Zeitpunkt erwarten, dass eine Variable vom Typ `int` auch wirklich eine Zahl steht, mit der ich rechnen kann.
@@ -316,11 +317,50 @@ String einString = "Hello World"; // für Strings lassen sich auch direkt Litera
 String einWeitererString = new String("Hello World"); // reguläre Objektinitialisierungssyntax mit "new"
 ```
 
+### Typumwandlung (Typecast)
+Teilweise muss zur Laufzeit eine Variable eines Typs zu einer Variablen eines anderen Typs umgewandelt werden.
+Beispielsweise gibt ein Benutzer an der Konsole einen `String` ein, wir möchten diesen aber als Zahl (`int`) interpretieren, damit wir mit diesem Berechnungen vornehmen können.
+
+Dazu wird eine Typumwandlung (Typecast) verwendet.
+Teilweise erfolgt eine Typumwandlung bereits implizit, wenn ein niederwertiger Datentyp (z. B. `short`) in einen höherwertigen Datentyp (z. B. `int`) umgewandelt wird.
+
+```java
+short eineKleineGanzzahl = 42;
+int eineGanzzahl = eineKleineGanzzahl; // Typumwandlung erfolgt automatisch
+```
+
+Im entgegengesetzten Fall, also bei einer Konvertierung von einem höherwertigen in einen niederwertigeren Datentyp muss ein expliziter Typecast vorgenommen werden.
+Dies ist dadurch begründet, dass dabei (fast) immer Informationen verloren gehen, beispielsweise die Nachkommastellen wie im folgenden Beispiel:
+
+```java
+int wert;
+double pi = 3.1415926; // usw.
+
+wert = (int) pi; // danach ist wert = 3
+
+wert = pi; // Fehler: "error: incompatible types: possible lossy conversion from double to int"
+```
+
+Durch den Cast-Operator `(<Zieldatentyp>)` vor der "Quellvariable" teilen wir dem Compiler mit, dass wir uns dem möglichen Informationsverlust bewusst sind und trotzdem eine Typumwandlung wünschen. 
+
+Des Weiteren muss bei Berechnungen die automatische Typkonvertierung beachtet werden.
+Addiert man beispielsweise eine Variable vom Typ `int` zu einer Variablen vom Typ `long`, so ist der resultierende Datentyp `long`, also immer der höherwertige Operand.
+
+|  | `byte` | `char` | `short` | `int` | `long` | `float` | `double` |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **`byte`** | `int` | `int` | `int` | `int` | `long` | `float` | `double` |
+| **`char`** | `int` | `int` | `int` | `int` | `long` | `float` | `double` |
+| **`short`** | `int` | `int` | `int` | `int` | `long` | `float` | `double` |
+| **`int`** | `int` | `int` | `int` | `int` | `long` | `float` | `double` |
+| **`long`** | `long` | `long` | `long` | `long` | `long` | `float` | `double` |
+| **`float`** | `float` | `float` | `float` | `float` | `float` | `float` | `double` |
+| **`double`** | `double` | `double` | `double` | `double` | `double` | `double` | `double` |
+
 ### Arrays
 Ein Array besitzt in Java eine statische Länge, die bei der Initialisierung zugewiesen wird.
 Daraus folgt, dass zur Laufzeit keine weiteren Elemente hinzugefügt werden können, sondern nur die Elemente an den bereits initialisierten Indizes modifiziert werden können.
 
-Der Zugriff auf ein Element des Array erfolgt ähnlich zu Python über den Index in `[]`.
+Der Zugriff auf ein Element des Arrays erfolgt ähnlich zu Python über den Index in `[]`.
 ```java
 int[] einIntArray = new int[6]; // 6 Elemente (Index 0 bis 5)
 for(int i = 0; i < einIntArray.length; i++) { // alle Elemente des Arrays durchlaufen
@@ -328,10 +368,10 @@ for(int i = 0; i < einIntArray.length; i++) { // alle Elemente des Arrays durchl
 }
 ```
 
-Ein Basistyp kann im Gegensatz zu einer Variable, die als Typ eine Klasse besitzt, nicht `null` sein.
+Ein Basistyp kann im Gegensatz zu einer Variablen, die als Typ eine Klasse besitzt, nicht `null` sein.
 Deshalb wird jedes Elements des Arrays mit dem "Standardwert" des Basistyps (siehe [Basistypen](#basistypen)) initialisiert.
 
-Alternativ können bei der Initialisierung des Array auch die Initialisierungswerte über die `{ }`-Notation mitgegeben werden.
+Alternativ können bei der Initialisierung des Arrays auch die Initialisierungswerte über die `{ }`-Notation mitgegeben werden.
 Die Länge des Arrays ergibt sich aus der Anzahl der Elemente in der Werteliste.
 
 Zu beachten ist auch hier: Alle Elemente müssen den gleichen Typ besitzen, der bei der Deklaration des Arrays (z. B. `int[]`) festgelegt wurde.
@@ -368,7 +408,7 @@ ArrayList<String> dynamischesStringArray = new ArrayList<>();
 ArrayList<Integer> dynamischesIntegerArray = new ArrayList<>();
 ```
 
-Bei einer `ArrayList` handelt es sich um ein Objekt, d.h. wir können verschiedene Methoden verwenden, um Elemente hinzuzufügen oder zu löschen, die Anzahl der Elemente ausgebenen zu lassen usw.
+Bei einer `ArrayList` handelt es sich um ein Objekt, d.h. wir können verschiedene Methoden verwenden, um Elemente hinzuzufügen oder zu löschen, die Anzahl der Elemente ausgeben zu lassen usw.
 Alle implementierten Methoden können in der [offiziellen Dokumentation der `ArrayList`-Klasse](https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/ArrayList.html) eingesehen werden.
 
 Die wichtigsten Methoden sind:
@@ -388,7 +428,7 @@ dynamischesStringArray.size(); // gibt die Anzahl der Elemente, die momentan in 
 Im Unterschied zu den Basistypen kann ein Objekt auch "leer" sein, also keine Referenz auf eine Speicheradresse aufweisen.
 In Java hat dies dann den "Wert" `null`.
 
-Beispielsweise bedeutet die Anweisung `String einString = null;`, dass wir eine neue Variable vom Typ/der Klasse `String` deklarieren möchten, der allerdings keine Speicherreferenz aufweist.
+Beispielsweise bedeutet die Anweisung `String einString = null;`, dass wir eine neue Variable des Typs/der Klasse `String` deklarieren möchten, der allerdings keine Speicherreferenz aufweist.
 Sobald wir diesen dann mit einem anderen Wert, z. B. `einString = "Hello World";` überschreiben, wird im Speicher ein Objekt der Klasse `String` angelegt und die Referenz darauf in der Variable `einString` gespeichert.
 
 Im Unterschied zur `String einString;`, was einer Deklaration entspricht, ist `einString` mit der Zuweisung von `null` bereits initialisiert.
@@ -420,18 +460,18 @@ if(einString == null) {
 Im Gegensatz zu Variablen, deren Wert auch nach der Initialisierung geändert werden kann, existieren in der Programmierung auch sogenannte Konstanten.
 Diese sind, sobald sie einmal initialisiert wurden, d.h. einen Wert zugewiesen bekommen haben, nicht mehr veränderbar und dadurch konstant.
 
-In Java teilt man dem Kompiler mit dem Schlüsselwort `final` mit, dass es sich nicht um eine Variable sondern um eine Konstante handelt.
+In Java teilt man dem Compiler mit dem Schlüsselwort `final` mit, dass es sich nicht um eine Variable, sondern um eine Konstante handelt.
 Um Konstanten besser von Variablen unterscheiden zu können, schreibt man diese meistens in Großbuchstaben, z. B. `final int MAXIMALE_ANZAHL_SPIELER = 10;`.
 
 ```java
 final double PI = 3.1415926; // usw.
-PI = 4; // Kompilerfehler   
+PI = 4; // Compilerfehler   
 ```
 
 Durch den Einsatz von Konstanten kann die Übersichtlichkeit des Quelltexts erhöht werden.
-Anstatt an jeder Stelle, an der die Zahl `3.1415926` verwendet wird diese als solche hinzuschreiben, wird sie einmalig als `PI` definiert und ist über diesen Bezeichner überall verwendbar.
+Anstatt an jeder Stelle, an der die Zahl `3.1415926` verwendet wird, diese als solche hinzuschreiben, wird sie einmalig als `PI` definiert und ist über diesen Bezeichner überall verwendbar.
 Sollte sich der Wert einer Konstante ändern, z. B. soll die `MAXIMALE_ANZAHL_SPIELER` auf `15` erhöht werden, so muss diese Änderung nur an einer anstatt an jeder einzelnen Stelle im Code vorgenommen werden.
-Da der Kompiler explizit überprüft, ob unsere Konstante existiert, reduziert dies auch die Fehlerhäufigkeit, da beispielsweise `3.1416` ebenfalls ein valider Wert wäre, nicht aber `IP` statt `PI`.
+Da der Compiler explizit überprüft, ob unsere Konstante existiert, reduziert dies auch die Fehlerhäufigkeit, da beispielsweise `3.1416` ebenfalls ein valider Wert wäre, nicht aber `IP` statt `PI`.
 
 ## Schleifen
 ### `for`-Schleife
@@ -441,7 +481,7 @@ Die Schleife besteht aus drei Teilen:
 2. Abbruchbedingung: z. B. `i < 10;`
 3. Nach jeder Iteration ausgeführte Anweisung: z. B. `i++;` oder `i = i + 4;` für Viererschritte
 
-Die Syntax sieht wie folgt aus und tut das gleiche wie `for i in range(0, 10);` in Python, nämlich den Schleifenrumpf (`{ }`) 10 mal durchlaufen und dabei nach jeder Iteration die Variable `i` um eins erhöhen. 
+Die Syntax sieht wie folgt aus und tut das gleiche wie `for i in range(0, 10);` in Python, nämlich den Schleifenrumpf (`{ }`) 10 Mal durchlaufen und dabei nach jeder Iteration die Variable `i` um eins erhöhen. 
 
 ```java
 // for(1.; 2.; 3.) { }
@@ -599,7 +639,7 @@ java MeinDateiAuflistProgramm verzeichnis=Filme
 ## `package` und `import`
 Gerade bei größeren Projekten, an den viele Programmierende parallel arbeiten, wird der Code schnell unübersichtlich.
 Zudem werden in Java Projekte in Modulen organisiert, um beispielsweise Namensdopplungen bei Klassendefinitionen zu vermeiden.
-Deshalb weist man über die Anweisung `package <package name>`, also z. B. `package vorlesung.beispiele.basics;` zu Beginn einer jeden (Klassen-)Datei die jeweiligen Artifakte wie Klassen usw. einem Paket (`package`) zu.
+Deshalb weist man über die Anweisung `package <package name>`, also z. B. `package vorlesung.beispiele.basics;` zu Beginn einer jeden (Klassen-)Datei die jeweiligen Artefakte wie Klassen usw. einem Paket (`package`) zu.
 Die durch `.` separierten Bestandteile des Paketnamens werden als Ordnerhierarchie angesehen.
 
 Sollen nun in einem zweiten Paket `vorlesung.beispiele.advanced` Klassen vom Paket `vorlesung.beispiele.basics` importiert werden, so kann dafür die `import`-Anweisung genutzt werden.

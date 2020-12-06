@@ -13,6 +13,14 @@
     - [Zugriffsmodifikatoren ](#zugriffsmodifikatoren)
     - [Getter](#getter)
     - [Setter](#setter)
+- [Vererbung](#vererbung)
+    - [Konzept](#konzept)
+    - [Abstrakte Klassen und Methoden (`abstract`)](#abstrakte-klassen-und-methoden-abstract)
+    - [Schnittstellen (`interface`)](#schnittstellen-interface)
+- [Polymorphie](#polymorphie)
+    - [Überladung (statische Polymorphie)](#berladung-statische-polymorphie)
+    - [Dynamische Polymorphie](#dynamische-polymorphie)
+    
 
 ## Bisherige Programmstruktur
 In den Python-Vorlesungen haben wir pro "Eigenschaft" bzw. Attribut eines Spielers eine eigene Variable angelegt.
@@ -37,7 +45,7 @@ if(player1_score > player2_score) {
   System.out.println(player2_name + " hat gewonnen!");
 }
 ```
-Der Code funktioniert natürlich und tut auch was er soll, allerdings ist er nicht erweiterbar und sehr fehleranfällig.
+Der Code funktioniert und tut auch was er soll, allerdings ist er nicht erweiterbar und sehr fehleranfällig.
 Der Entwickelnde muss z. B. immer aufpassen, dass bei der richtigen `score` auch der richtige `name` ausgegeben wird.
 Zudem ist dieser Aufbau nicht dynamisch erweiterbar.
 Ein dritter und vierter Spieler können als weitere Variablen hinzugefügt werden, aber wie sieht es bei einer vorher nicht genau definierten Anzahl an Spielern aus?
@@ -50,7 +58,7 @@ int[] player_scores = {0, 0};
 Allerdings benötigen wir auch hier eine Konvention, beispielsweise über den Array-Index, um die verschiedenen Attribute für einen `Spieler` herauszufinden.
 
 Viel kompakter und damit strukturierter, weniger fehleranfällig und erweiterbarer wäre es, wenn wir definieren können, welche Attribute (und Methoden) ein Spieler _generell_ unterstützt.
-Diese "Vorlage" können wir dann nutzen, um beliebig viele Spieler mit diesen Attributen und Methoden, allerdings anderen Attributswerten, zu erstellen.
+Diese "Vorlage" können wir dann nutzen, um beliebig viele Spieler mit diesen Attributen und Methoden, allerdings anderen Attributwerten, zu erstellen.
 
 ## Konzept
 Das Prinzip, in einer "Vorlage" oder "Blaupause" zu definieren, welche Attribute und Methoden eine Entität wie ein `Spieler` besitzt, existiert und nennt sich **Objektorientierung** bzw. Objektorientierte Programmierung und wird häufig als Gegensatz zur (zuvor erläuterten) prozeduralen Programmierung gesehen.
@@ -107,7 +115,7 @@ class Player {
 }
 ```
 
-Wir haben also eine Klasse `Player` definiert, die zwei Attribute besitzt: `name` vom Typ `String` und `score´ vom Typ `int`` .
+Wir haben also eine Klasse `Player` definiert, die zwei Attribute besitzt: `name` vom Typ `String` und `score` vom Typ `int`.
 Jedes Objekt, das nun über die `new`-Anweisung aus dieser Klasse erzeugt wird, besitzt nun seine eigenen Werte für `name` und `score`.
 
 ```java
@@ -161,7 +169,7 @@ playerTwo.name = "Moritz";
 playerTwo.displayName(); // Ausgabe: "Hello Moritz!"
 ```
 
-Für jedes Objekt wird jeweils der Wert des Objektattributs `name` ausgegeben, d.h `playerOne` kann die Attribute von `playerTwo` nicht ohne Weiteres sehen oder modifizieren.
+Für jedes Objekt wird jeweils der Wert des Objektattributs `name` ausgegeben, d.h. `playerOne` kann die Attribute von `playerTwo` nicht ohne Weiteres sehen oder modifizieren.
 
 ### `this`-Referenz
 In der vorherigen Sektion [Methoden](#methoden) haben wir das Schlüsselwort `this` verwendet, um auf den Attributwert des jeweiligen Objekts, also `playerOne` bzw. `playerTwo` zuzugreifen.
@@ -182,7 +190,7 @@ public class Player {
 ```
 
 Welche Variable ist hier mit `name` gemeint, der Parameter der Methode `setName` oder das Attribut `name`?
-Beide `name`s verweisen hier auf den Parameter der Methode, weshalb sich der Wert des Attributs `name` nicht ändert.
+Beide Variablen `name` verweisen hier auf den Parameter der Methode, weshalb sich der Wert des Attributs `name` nicht ändert.
  
 Dies ist allerdings nicht ohne weitere Analysen ersichtlich, deshalb sollte man solche Anweisungen wie folgt schreiben:
 
@@ -375,3 +383,347 @@ public class Product {
 Zusätzlich muss beachtet werden, dass bei strikter Befolgung des Prinzips der Datenkapselung (fast) alle Attribute `private` oder `protected`, also für andere Klassen nicht sichtbar sind.
 Daher muss für jedes Attribut, dass auslesbar bzw. modifizierbar sein soll, ein Getter bzw. Setter definiert werden.
 Als Namenskonvention verwendet man die beiden Begriffe `get` und `set` und hängt in der bekannten `lowerCamelCase`-Schreibweise den Attributnamen an, z. B. `getName` oder `setPrice`. 
+
+## Vererbung
+### Konzept
+In vielen Fällen ist es notwendig, Klassen je nach Anwendungsfall zu erweitern bzw. zu spezialisieren.
+Dazu wird das Konzept der Vererbung (inheritance) verwendet.
+Dabei wird zwischen einer Kind- und einer Elternklasse unterschieden.
+Die Kindklasse erbt von der Elternklasse und übernimmt alle sichtbaren (siehe [Zugriffsmodifikatoren](#zugriffsmodifikatoren)) Attribute und Methoden der Elternklasse.
+
+In einem stark vereinfachten Beispiel definieren wir eine Klasse `Lebewesen`, die alle Attribute und Methoden enthält, die für alle Lebewesen gültig sind (hier nur `name`).
+Von der Klasse `Lebewesen` erben die beiden Klassen `Mensch` und `Tier` (im Klassendiagramm durch einen nicht ausgefüllten Pfeil dargestellt), d.h. sowohl Objekte der Klasse `Mensch` als auch der Klasse `Tier` besitzen ein Attribut `name`.
+Aufgrund der Vererbungsbeziehung muss dieses Attribut nicht erneut für den `Mensch` oder das `Tier` definiert werden.
+Folglich sind `Mensch` und `Tier` Spezialisierungen von `Lebewesen`, wohingegen `Lebewesen` eine Generalisierung von `Mensch` und `Tier` ist.
+
+![Vererbung](includes/Vererbung.png) 
+
+Zusätzlich deklarieren wir für ein Objekt der Klasse `Mensch` ein Attribut `wohnort` und eine Methode `essen()`.
+Das `Tier` hingegen besitzt eine Eigenschaft `haustier` (Typ `boolean`) und die Methode `fressen()`.
+
+Unser Modell kann um beliebig viele Hierarchieebenen erweitert werden.
+Beispielweise können wir die zwei Klassen `Hund` und `Katze` definieren, die von der Klasse `Tier` erben und zusätzlich zu `name`, `haustier` und `fressen()` (alle vererbt) die Methoden `bellen()` bzw. `miauen()` besitzen.
+Allerdings kann in Java eine Klasse nicht von zwei anderen Klassen gleichzeitig erben.
+
+Möchten wir unser Klassendiagramm in Java "übersetzen", benötigen wir zur Kenntlichmachung der Vererbungsbeziehung lediglich das Schlüsselwort `extends` in der Klassendefinition.
+
+```java
+class Lebewesen { // kein extends, da wir keine Vererbungsbeziehung (zu einer Elternklasse) definiert haben
+    public String name;
+}
+
+class Mensch extends Lebewesen {
+    public String wohnort;
+    
+    public void essen() {
+        System.out.println("Der Mensch isst.");
+    }
+}
+
+class Tier extends Lebewesen {
+    public boolean haustier;
+    
+    public void fressen() {
+        System.out.println("Das Tier frisst.");
+    }
+}
+```
+
+Die Klassen `Hund` und `Katze` müssen von `Tier` und nicht von `Lebewesen` erben, damit wir auch das Attribut `haustier` sowie die Methode `fressen()` nutzen können:
+
+```java
+class Hund extends Tier {
+    public void bellen() {
+        System.out.println("Wau wau!");
+    }
+}
+
+class Katze extends Tier {
+    public void miauen() {
+        System.out.println("Miau!");
+    }
+}
+```
+
+Mit der Klasse, deren Konstruktor wir bei der Initialisierung eines Objekts aufrufen (`new`), können wir bestimmen, um welches Lebewesen es sich handelt.
+
+```java
+Lebewesen einLebewesen = new Lebewesen(); // -> Lebewesen
+einLebewesen.name = "Ein Lebewesen";
+einLebewesen.fressen(); // Fehler, da fressen() nicht für die Klasse "Lebewesen" definiert ist
+
+Hund wauwau = new Hund(); // -> Hund
+wauwau.name = "Wau Wau";
+wauwau.fressen(); // Ausgabe: "Das Tier frisst."
+wauwau.miauen(); // Fehler, da miauen() nicht für die Klasse "Hund" definiert ist
+``` 
+
+### Abstrakte Klassen und Methoden (`abstract`)
+In manchen Fällen möchten wir verhindern, dass eine Klasse initialisiert werden kann.
+Beispielsweise möchten wir zwar die Vorzüge der Vererbung nutzen, ein Objekt der Klasse `Lebewesen` soll aber nicht existieren dürfen.
+Dadurch muss immer eine spezialisierte Klasse wie z. B. `Mensch` oder `Hund` initialisiert werden.
+Dazu verwenden wir das Schlüsselwort `abstract`.
+Dies teilt dem Compiler mit, dass die Anweisung `new Lebewesen();` nicht gültig ist, da Objekte der Klasse `Lebewesen` nicht existieren dürfen.
+
+```java
+abstract class Lebewesen { // kein extends, da wir keine Vererbungsbeziehung (zu einer Elternklasse) definiert haben
+    public String name;
+}
+
+class Mensch extends Lebewesen {
+    public String wohnort;
+    
+    public void essen() {
+        System.out.println("Der Mensch isst.");
+    }
+}
+```
+
+```java
+Lebewesen einLebewesen = new Lebewesen(); // Fehler, da "Lebewesen" abstrakt ist
+
+Mensch einMensch = new Mensch(); // funktioniert
+```
+
+Auch die Methoden einer abstrakten Klasse können als `abstract` definiert werden.
+Dadurch wird in der abstrakten Klasse zwar die Methodensignatur (Name, Parameterliste, Rückgabetyp und Sichtbarkeit) definiert, nicht aber der Methodenrumpf, der die konkrete Implementierung enthält.
+Eine Klasse, die von dieser abstrakten Klasse erbt, muss die abstrakte Methode selbst implementieren.
+
+```java
+abstract class Lebewesen { // kein extends, da wir keine Vererbungsbeziehung (zu einer Elternklasse) definiert haben
+    public String name;
+    
+    public abstract void detailsAusgeben(); // keine { }, da eine abstrakte Methode keinen Methodenrumpf besitzt 
+}
+
+class Mensch extends Lebewesen {
+    public String wohnort;
+
+    @Override // Annotation als Hinweis an den Compiler, dass die Methoden hier "wissentlich" überschrieben wurde
+    public void detailsAusgeben() { // Die Methode muss hier "mit Leben gefüllt werden"
+        System.out.println("Ich bin ein Mensch und heiße " + this.name);
+    }    
+
+    public void essen() {
+        System.out.println("Der Mensch isst.");
+    }
+}
+
+class Tier extends Lebewesen {
+    public boolean haustier;
+
+    @Override // Annotation als Hinweis an den Compiler, dass die Methoden hier "wissentlich" überschrieben wurde
+    public void detailsAusgeben() { // Die Methode muss hier "mit Leben gefüllt werden"
+        System.out.println("Ich bin ein Tier und heiße " + this.name);
+    }      
+
+    public void fressen() {
+        System.out.println("Das Tier frisst.");
+    }
+}
+```
+
+Ist die Methode `detailsAusgeben()` von `Lebewesen` nicht als `abstract` definiert, muss sie einen Methodenrumpf besitzen und wird entsprechend an die Subklassen vererbt.
+
+```java
+abstract class Lebewesen { // kein extends, da wir keine Vererbungsbeziehung (zu einer Elternklasse) definiert haben
+    public String name;
+    
+    public void detailsAusgeben() {
+        System.out.println("Ich bin ein Lebewesen und heiße " + this.name);
+    }
+}
+
+```
+
+### Schnittstellen (`interface`)
+
+Interfaces sind sehr ähnlich zu abstrakten Klassen, können allerdings nur Methodendeklarationen (bzw. -signaturen) und keine Implementierungen dieser enthalten.
+Schnittstellen können wie eine abstrakte Klasse ebenfalls nicht initialisiert werden.
+Außerdem ist es nicht möglich, Variablen in einem Interface zu definieren, da alle dort definierten Attribute automatisch `final` und dadurch Konstanten sind (siehe [Java Basics](Java-Basics.md#konstanten)).
+
+Wie auch eine Klasse wird ein Interface in einer separaten Datei deklariert, wird allerdings mit `interface` statt `class` bezeichnet.
+
+```java
+interface Charakter { // z. B. in einem Computerspiel
+    String getTyp(); // jede Klasse, die das Interface "Charakter" implementiert muss auch "getTyp()" implementieren
+}
+```
+
+Eine andere Klasse kann die definierte Schnittstelle implementieren.
+Dafür wird das Schlüsselwort `implements` verwendet.
+Der Compiler "garantiert" anschließend, dass bei Ausführung des Programms alle im Interface definierten Methoden mit der entsprechenden Signatur von allen mit `implements` versehenen Klassen implementiert wurden.  
+
+```java
+class Mensch implements Charakter {
+    @Override
+    public String getTyp() { // muss implementiert werden, damit "Mensch" zu Schnittstelle "Charakter" konform ist
+        return "Mensch";
+    }
+}
+```
+
+Wie im Abschnitt [Konzept](#konzept) erläutert ist in Java zwar das Erben von mehreren Klassen nicht möglich, allerdings lassen sich `extends` und `implements` kombinieren.
+
+```java
+class Katze extends Tier implements Charakter {
+
+    public void miauen() {
+        System.out.println("Miau!");
+    }
+
+    @Override
+    public String getTyp() { // muss implementiert werden, damit "Katze" zu Schnittstelle "Charakter" konform ist
+        return "Katze";
+    }
+}
+```
+
+```java
+Katze katerFelix = new Katze();
+katerFelix.name = "Felix";
+katerFelix.fressen(); // Ausgabe: "Das Tier frisst."
+
+System.out.println(katerFelix.getTyp()); // Ausgabe: "Katze"
+```
+
+Um zu entscheiden, ob eine abstrakte Klasse oder eine Schnittstelle besser für die Umsetzung eines Szenarios geeignet ist,
+sollte analysiert werden, ob die "Elternklasse" Variablen oder bereits implementierte Methoden besitzen muss.
+Ist dies der Fall, ist eine abstrakte Klasse die richtige Wahl, da in dieser auch veränderbare (nicht konstante) Attribute sowie vererbbare Methoden definiert werden können.
+Ist das Ziel die Vorgabe von Methodensignaturen, beispielsweise um eine "Garantie" über die verfügbaren Methoden zu erreichen, ist ein Interface wahrscheinlich die bessere Wahl.
+
+## Polymorphie
+### Überladung (statische Polymorphie)
+Java unterstützt als Sprache mit statischer Typisierung das sogenannte Überladen von Methoden, was auch als statische Polymorphie bezeichnet wird.
+Dabei kann der Compiler anhand der Methodensignatur bei mehreren gleichnamigen Methoden erkennen, welche Methode ausgeführt werden soll.
+Im Gegensatz zum Überschreiben bei der Vererbung bzw. bei Interfaces wird nicht die gesamte Methode überschrieben, sondern um eine weitere "Variante" ergänzt.
+
+Beispielweise möchten wir für ein Objekt der Klasse `Mensch` zwei "Varianten" der Methode `essen()` anbieten:
+Eine gibt eine "generische" Meldung aus, eine andere spezifiziert genauer, was der Mensch isst.
+
+```java
+class Mensch extends Lebewesen {
+  
+    // Attribute und überschriebene Methoden aus Übersichtlichkeitsgründen ausgelassen    
+
+    public void essen() {
+        System.out.println("Der Mensch isst.");
+    }
+
+    public void essen(String nahrungsmittel) {
+        System.out.println("Der Mensch isst " + nahrungsmittel);
+    }
+}
+```
+
+```java
+Mensch einMensch = new Mensch();
+einMensch.essen(); // Ausgabe: "Der Mensch isst."
+einMensch.essen("Brot"); // Ausgabe: "Der Mensch isst Brot"
+```
+
+Soll eine Methode überladen werden, müssen alle "Varianten" dieser Methode den gleichen Namen besitzen.
+Die Anzahl, Reihenfolge und die Typen der erwarteten Parameter dient dann als "Entscheidungsgrundlage" für den Compiler, welche Methode tatsächlich aufgerufen wird.
+Allerdings kann Java die überladenen Methoden nicht am Rückgabetyp unterscheiden:
+
+```java
+public int zufallszahl() {
+    // gebe eine ganzzahlige Zufallszahl zurück
+}
+
+public double zufallszahl() {
+    // gebe eine Gleitkomma-Zufallszahl zurück
+}
+```
+
+Ruft man `zufallszahl();` auf, kann der Compiler nicht unterscheiden, ob wir als Rückgabetyp `int` oder `double` erwarten.
+
+### Dynamische Polymorphie
+
+Die im vorherigen Abschnitt erläuterte statische Polymorphie wird bereits beim Kompilieren vom Compiler "aufgelöst".
+Im Gegensatz dazu wird bei der dynamischen Polymorphie erst zur Laufzeit des Programms entschieden, welche "Variante" (in dem Fall welcher Typ) ausgewählt werden soll. 
+Aus diesem Grund wird die dynamische Polymorphie auch Laufzeitpolymorphie genannt.
+
+Wir erweitern unser Beispiel, indem wir für `Hund` und `Katze` jeweils die vererbte Methode `fressen()` überschreiben:
+
+```java
+class Hund extends Tier {
+    @Override
+    public void fressen() {
+        System.out.println("Der Hund frisst Hundefutter.");
+    }
+}
+
+class Katze extends Tier {
+    @Override
+    public void fressen() {
+        System.out.println("Die Katze frisst Katzenfutter.");
+    }
+}
+```
+
+```java
+Tier katerFelix = new Katze(); // wir speichern eine Referenz auf ein "Katze"-Objekt in einer Variablen vom Typ "Tier"
+katerFelix.fressen(); // Ausgabe: "Die Katze frisst Katzenfutter."
+```
+
+Zur Laufzeit hat der Java-Interpreter nun entschieden, dass beim Aufruf von `fressen()` die Implementierung der Methode von `Katze` aufgerufen wird, obwohl die Variable mit dem Typ `Tier` deklariert wurde.
+Dass `katerFelix` trotzdem die Klasse `Katze` besitzt, lässt sich auch über die Ausgabe von `katerFelix.getClass()` überprüfen (`class Katze`). 
+
+Die dynamische Polymorphie ist insbesondere hilfreich, wenn man beispielsweise eine Menge an `Tier`-Objekte in einem gemeinsamen Array speichern möchte, unabhängig von dem tatsächlichen Typ.
+
+```java
+Tier[] tiereArray = new Tier[4];
+tiereArray[0] = new Katze();
+tiereArray[1] = new Hund();
+tiereArray[2] = new Tier(); // ein "generelles" Tier, also kein "Hund" und keine "Katze"
+tiereArray[3] = new Katze();
+
+for(int i = 0; i < tiereArray.length; i++) {
+    System.out.println(tiereArray[i].getClass());
+    tiereArray[i].fressen();
+}
+```
+
+Da zur Laufzeit bei jedem Aufruft von `fressen()` in der Schleife "ermittelt" wurde, welchen Typ das jeweilige Element "tatsächlich" besitzt, sieht die Ausgabe an der Konsole wie folgt aus:
+
+```text
+class Katze
+Die Katze frisst Katzenfutter.
+class Hund
+Der Hund frisst Hundefutter.
+class Tier
+Das Tier frisst.
+class Katze
+Die Katze frisst Katzenfutter.
+```
+
+Allerdings ist in der Schleife nur der Zugriff auf Attribute und Methoden möglich, die ein `Tier` auch besitzt.
+Die Anweisung `tiereArray[i].miauen();` erzeugt beispielsweise einen Fehler, da `miauen()` für `Tier` nicht definiert ist.
+Ist der Aufruf der "spezialisierten" Methoden notwendig, muss eine Typumwandlung (siehe [Java Basics](Java-Basics.md#typumwandlung-typecast)) vorgenommen werden, nachdem die "tatsächliche" Klasse ermittelt wurde:
+
+```java
+for(int i = 0; i < tiereArray.length; i++) {
+
+  if(tiereArray[i].getClass() == Katze.class) {
+    Katze eineKatze = (Katze) tiereArray[i]; // Typumwandlung zur Spezialisierung "Katze"
+    eineKatze.miauen();
+  } else if(tiereArray[i].getClass() == Hund.class) {
+    Hund einHund = (Hund) tiereArray[i]; // Typumwandlung zur Spezialisierung "Hund"
+    einHund.bellen();
+  } else {
+    System.out.println("Ein generelles Tier gibt keinen Laut von sich.");
+  }
+}
+```
+
+Die modifizierte Schleife erfolgt folgende Ausgabe:
+
+```text
+Miau!
+Wau wau!
+Ein generelles Tier gibt keinen Laut von sich.
+Miau!
+```
+
+Weitere Informationen zum Konzept der Polymorphie finden Sie in der Onlineversion des Buchs [Objektorientierte Programmierung](http://openbook.rheinwerk-verlag.de/oop/oop_kapitel_05_002.htm) von Bernhard Lahres und Gregor Rayman.
