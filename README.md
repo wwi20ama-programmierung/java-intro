@@ -19,6 +19,7 @@
     - [Weihnachtsmann AG](Vorlesungsinhalte/Vorlesung%2027.11.2020/)
 - Exkurse
     - [Strings vs. Basistypen](Exkurse/Strings%20vs.%20Basistypen.md) (Frage vom 07.11.2020)
+    - [Variadische Methoden](Exkurse/Variadische%20Methoden.md)
     
 ## Nützliche Links
 

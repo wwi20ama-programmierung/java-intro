@@ -28,6 +28,6 @@ Wenn Sie das Konzept des `String Pools` im Detail verstehen möchten, empfehle i
 - auf [Repl.it](https://repl.it/join/hjvkrsaq-laundy)
 - Verzeichnis `Strings vs. Basistypen`
 
-## Weitere Links
+## Weiterführende Links
 - [Baeldung: Java String Pool](https://www.baeldung.com/java-string-pool)
 - [GeeksforGeeks: Interning of String in Java](https://www.geeksforgeeks.org/interning-of-string/)
