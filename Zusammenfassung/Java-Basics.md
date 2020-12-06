@@ -4,11 +4,15 @@
     - [Warum Java?](#warum-java)
     - [Java vs. Python](#java-vs-python)
 - [Syntax](#syntax)
+    - [Bedingte Anweisung und Verzweigung (`if`/`else`)](#bedingte-anweisung-und-verzweigung-ifelse)
+    - [Auswahloperator ("Conditional Operator")](#auswahloperator-conditional-operator)
+    - [Mehrfachverzweigung (`switch`-Konstrukt)](#mehrfachverzweigung-switch-konstrukt)
 - [Typen und Typisierung](#typen-und-typisierung)
     - [Konzept](#konzept)
     - [Basistypen](#basistypen)
     - [Arrays](#arrays)
     - [`null`](#null)
+    - [Konstanten](#konstanten)
 - [Schleifen](#schleifen)
     - [`for`-Schleife](#for-schleife)
     - [`for`-Schleife (vereinfacht)](#for-schleife-vereinfacht)
@@ -68,7 +72,7 @@ Java überprüft diesen Typ dann bei jeder Änderung der Variable und gibt eine 
 
 ## Syntax
 Zwei grundlegende syntaktische Unterschiede fallen beim Vergleich von Python- und Java-Code sofort auf:
-1. Jede Instruktion endet in Java mit einem Semikolon (`;`), z.B. `int ganzzahl = 6;`
+1. Jede Instruktion endet in Java mit einem Semikolon (`;`), z. B. `int ganzzahl = 6;`
 2. Blöcke, beispielsweise bei Schleifen oder `if`/`else`-Verzweigungen, werden durch geschweifte Klammern (`{` und `}`) und nicht durch Einrückungen eingegrenzt.
 Trotzdem wird der Inhalt dieser Blöcke zur Verbesserung der Lesbarkeit eingerückt.
 3. Kommentare werden über `//` eingeleitet (bzw. `/*` und `*/` für mehrzeilige Kommentare)
@@ -79,6 +83,8 @@ class Klassenname {
     // Attribute, Methoden usw.
 }
 ```
+
+### Bedingte Anweisung und Verzweigung (`if`/`else`)
 
 Ansonsten verhält sich die Syntax sehr ähnlich zu der, die wir bereits bei Python kennengelernt haben.
 Als Beispiel eine `if`/`else`-Verzweigung:
@@ -94,6 +100,169 @@ if(zahl < 5) {
     // Wert von Variable "zahl" ist größer 5
 }
 ```
+
+### Auswahloperator ("Conditional Operator")
+
+Eine `if`/`else`-Verzweigung kann auch in kompakterer Form geschrieben werden.
+Dazu wird der sogenannte Auswahloperator ("Conditional Operator") verwendet.
+Dieser besteht aus einem `?` und einem `:`.
+
+```java
+int tankinhalt = 12; // in Prozent 
+
+String status = (tankinhalt < 20) ? "Tank bald leer!" : "Genügend Reserve vorhanden.";
+System.out.println(status); // Ausgabe: "Tank bald leer!"
+```
+
+Diese Notation kann man sich mit dem Satzbau einer "normalen" Frage merken:
+> Ist die Bedingung `tankinhalt < 20` erfüllt **?** gebe "Tank bald leer!" aus, ansonsten **:** "Genügend Reserve vorhanden.".
+
+Der Teil vor dem Fragezeichen ist folglich der zu evaluierende Ausdruck, der Teil nach dem Fragezeichen die Operation,
+die ausgeführt werden soll, wenn der Ausdruck `true` ist,
+und der Teil nach dem Doppelpunkt entspricht dem `else`, also dem Fall, wenn der Ausdruck `false` ist.
+
+Als bedingte Anweisung sieht das Beispiel so aus:
+
+```java
+int tankinhalt = 12; // in Prozent 
+
+String status;
+if(tankinhalt < 20) {
+    status = "Tank bald leer!";
+} else {
+    status = "Genügend Reserve vorhanden.";
+}
+
+System.out.println(status); // Ausgabe: "Tank bald leer!"
+```
+
+Auch eine Schachtelung verschiedener Auswahloperatoranweisungen ist möglich, darunter leidet allerdings die Verständlichkeit des Quelltexts.
+
+```java
+int tankinhalt = 12; // in Prozent 
+
+String status = (tankinhalt < 20) ? (tankinhalt < 5) ? "Tank ist leer!" : "Tank bald leer!" : "Genügend Reserve vorhanden.";
+System.out.println(status); // Ausgabe: "Tank bald leer!"
+```
+
+Als bedingte Anweisung lässt sich dies ebenfalls durch eine Schachtelung von zwei `if`/`else` realisieren:
+
+```java
+int tankinhalt = 12; // in Prozent 
+
+String status;
+if(tankinhalt < 20) {
+    if(tankinhalt < 5) {
+        status = "Tank bald leer!";
+    } else {
+        status = "Tank ist leer!";
+    }
+} else {
+    status = "Genügend Reserve vorhanden.";
+}
+
+System.out.println(status); // Ausgabe: "Tank bald leer!"
+```
+
+Dabei ist zu beachten, dass der Fall in der äußeren `if`-Anweisung den Fall der inneren `if`-Anweisung beinhalten muss.
+In unserem Beispiel ist dies erfüllt, da wenn `tankinhalt < 20` der Wert entweder `< 5` (`if`) oder `>= 5` (`else`) sein kann.
+
+### Mehrfachverzweigung (`switch`-Konstrukt)
+
+Sollen mehrere Verzweigungen bzw. Fälle überprüft werden, kann in Java eine `switch`-Anweisung verwendet werden:
+
+```java
+int wochentag = 4; // z. B. eine Benutzereingabe
+
+switch(wochentag) {
+    case 1:
+        System.out.println("Es ist Montag.");
+        break;
+    case 2:
+        System.out.println("Heute ist Dienstag.");
+        break;
+    case 3:
+        System.out.println("Es ist Mittwoch.");
+        break;
+    case 4:
+        System.out.println("Heute ist Donnerstag.");
+        break;
+    case 5:
+        System.out.println("Freitag. Bald ist Wochenende!");
+        break;
+    case 6:
+        System.out.println("Heute ist Samstag (Wochenende)");
+        break;
+    case 7:
+        System.out.println("Heute ist Sonntag (Wochenende)");
+        break;
+    default: // ... else
+        System.out.println(wochentag + " ist kein gültiger Wochentag!");
+} // Ausgabe: "Heute ist Donnerstag."
+```
+
+Dieses Konstrukt macht das gleiche wie die folgende Kombination aus `if`/`else if`/`else`-Verzweigungen:
+
+```java
+int wochentag = 4; // z. B. eine Benutzereingabe
+
+if (wochentag == 1) {
+    System.out.println("Es ist Montag.");
+} else if (wochentag == 2) {
+    System.out.println("Heute ist Dienstag.");
+} else if (wochentag == 3) {
+    System.out.println("Es ist Mittwoch.");
+} else if (wochentag == 4) {
+    System.out.println("Heute ist Donnerstag.");
+} else if (wochentag == 5) {
+    System.out.println("Freitag. Bald ist Wochenende!");
+} else if (wochentag == 6) {
+    System.out.println("Heute ist Samstag (Wochenende)");
+} else if (wochentag == 7) {
+    System.out.println("Heute ist Sonntag (Wochenende)");
+} else {
+    System.out.println(wochentag + " ist kein gültiger Wochentag!");
+}
+```
+
+Jeder Fall (`case`) entspricht einer Überprüfung des Werts der Variable im `switch()` auf Gleichheit.
+In unserem Beispiel wird der Code-Block hinter `case 3:` nur ausgeführt, wenn die Variable `wochentag` den Wert `3` besitzt.
+Folglich muss die Bedingung `wochentag == 3` wahr sein.
+
+Durch die `break`-Anweisung wird der Codeblock für den jeweiligen `case` beendet, d.h. danach wird für das `switch`-Konstrukt keine weitere Anweisung mehr ausgeführt.
+Dies ist eine häufige Fehlerquelle, da das Weglassen der `break`-Anweisung auch eine valide Syntax aufweist.
+Im folgenden Beispiel wird für alle Werte von `wochentag` zwischen `1` und `5` der String `Arbeitstag` ausgegeben, für `6` und `7` der String `Wochenende`.
+
+```java
+int wochentag = 4; // z. B. eine Benutzereingabe
+
+switch(wochentag) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        System.out.println("Arbeitstag");
+        break; // hier nicht mehr weitermachen, falls eine der Fälle eingetreten ist
+    case 6:
+    case 7:
+        System.out.println("Wochenende");
+        break; // hier nicht mehr weitermachen, falls eine der Fälle eingetreten ist
+    default: // ... else
+        System.out.println(wochentag + " ist kein gültiger Wochentag!");
+}
+```
+
+Alle Fälle des `switch`-Konstrukts werden von oben nach unten ab dem ersten "Treffer" durchlaufen, bis ein `break` oder das Ende des `switch`-Konstrukts erreicht wird.
+Für alle Fälle, die nicht von einem `case` abgedeckt sind, wird der `default`-Zweig durchlaufen, `default` funktioniert folglich wie das `else` bei einer bedingten Anweisung (`if`/`else`).
+Da `default` die letzte Anweisung in einem `switch`-Block ist, wird dafür kein `break` benötigt.
+
+Zu beachten ist, dass das `switch`-Konstrukt in Java nur auf Gleichheit (also z. B. nicht `>` oder `<`) prüfen kann und mit folgenden Datentypen funktioniert:
+`byte`, `short`, `char`, `int`, `String` und `Enum` (siehe [The Java Tutorials](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html)).
+
+Seit Java SDK-Version 14 ist es außerdem möglich, sogenannte `switch`-Expressions zu verwenden.
+Diese besitzen eine kompaktere Syntax als die gerade präsentierten "originalen" `switch`-Anweisungen.
+Mehr Informationen zur Syntax dieser finden Sie in der offiziellen Java-Dokumentation zu [Switch Expressions](https://docs.oracle.com/en/java/javase/15/language/switch-expressions.html).
 
 ## Typen und Typisierung
 ### Konzept
@@ -247,13 +416,30 @@ if(einString == null) {
 }
 ```
 
+### Konstanten
+Im Gegensatz zu Variablen, deren Wert auch nach der Initialisierung geändert werden kann, existieren in der Programmierung auch sogenannte Konstanten.
+Diese sind, sobald sie einmal initialisiert wurden, d.h. einen Wert zugewiesen bekommen haben, nicht mehr veränderbar und dadurch konstant.
+
+In Java teilt man dem Kompiler mit dem Schlüsselwort `final` mit, dass es sich nicht um eine Variable sondern um eine Konstante handelt.
+Um Konstanten besser von Variablen unterscheiden zu können, schreibt man diese meistens in Großbuchstaben, z. B. `final int MAXIMALE_ANZAHL_SPIELER = 10;`.
+
+```java
+final double PI = 3.1415926; // usw.
+PI = 4; // Kompilerfehler   
+```
+
+Durch den Einsatz von Konstanten kann die Übersichtlichkeit des Quelltexts erhöht werden.
+Anstatt an jeder Stelle, an der die Zahl `3.1415926` verwendet wird diese als solche hinzuschreiben, wird sie einmalig als `PI` definiert und ist über diesen Bezeichner überall verwendbar.
+Sollte sich der Wert einer Konstante ändern, z. B. soll die `MAXIMALE_ANZAHL_SPIELER` auf `15` erhöht werden, so muss diese Änderung nur an einer anstatt an jeder einzelnen Stelle im Code vorgenommen werden.
+Da der Kompiler explizit überprüft, ob unsere Konstante existiert, reduziert dies auch die Fehlerhäufigkeit, da beispielsweise `3.1416` ebenfalls ein valider Wert wäre, nicht aber `IP` statt `PI`.
+
 ## Schleifen
 ### `for`-Schleife
 Eine `for`-Schleife ist eine sogenannte "kopfgesteuerte" Schleife, da die Überprüfung des Abbruchkriteriums _vor_ jeder Iteration stattfindet.
 Die Schleife besteht aus drei Teilen:
 1. Initialisierung der Zählervariable: z. B. `int i = 0;`
 2. Abbruchbedingung: z. B. `i < 10;`
-3. Nach jeder Iteration ausgeführte Anweisung: z.B. `i++;` oder `i = i + 4;` für Viererschritte
+3. Nach jeder Iteration ausgeführte Anweisung: z. B. `i++;` oder `i = i + 4;` für Viererschritte
 
 Die Syntax sieht wie folgt aus und tut das gleiche wie `for i in range(0, 10);` in Python, nämlich den Schleifenrumpf (`{ }`) 10 mal durchlaufen und dabei nach jeder Iteration die Variable `i` um eins erhöhen. 
 
@@ -383,7 +569,6 @@ Die Verwendung der `do-while`-Schleife sollte nur in Fällen, in denen man sich 
 Da Java typisiert ist, müssen wir für jede Methode auch mitteilen, welcher Rückgabewert (bei einem `return`) zu erwarten ist.
 Dabei können alle Basistypen wie beispielsweise `int`, aber auch Klassen wie `String` oder `MeineSpielerKlasse` verwendet werden.
 Soll die Methode (wie auch die `main`) keinen Wert zurückgeben, muss `void` angegeben werden, was im Englischen etwa `nichtig` oder `leer` bedeutet.
-
 
 ### `main`-Methode
 Die `main`-Methode ist eine statische Methode, d.h. sie ist für die Klasse definiert und damit für alle Objekte der Klasse gleich.
