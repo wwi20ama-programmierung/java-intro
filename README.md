@@ -31,6 +31,7 @@
 - [Java ist auch eine Insel (Buch, kostenlos)](http://openbook.rheinwerk-verlag.de/javainsel/)
 - [Java auf W3Schools](https://www.w3schools.com/java/default.asp)
 - [Java-Kurs auf codecademy](https://www.codecademy.com/learn/learn-java)
+- [Java-Videotutorialserie auf YouTube](https://www.youtube.com/watch?v=EDDJQojQzyM&list=PLgZuSc7xewde9zlJjmbLci0w9lV5BbCHE)
 
 ### Benötigte Tools
 - [Java SE Development Kit](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html)
@@ -47,3 +48,11 @@ Hinweis: Durch eingeben des Befehls `java -version` in die Konsole (z. B. `cmd` 
 
 ### Visualisierung von UML-Klassendiagrammen
 - [draw.io](https://app.diagrams.net/)
+
+### Git (Versionverwaltung)
+- [Git herunterladen](https://git-scm.com/downloads)
+- [Offizielle Dokumentation](https://git-scm.com/doc)
+- [Kurzeinführung](https://rogerdudler.github.io/git-guide/index.de.html)
+- [Git-Einführung von IONOS](https://www.ionos.de/digitalguide/websites/web-entwicklung/git-tutorial/)
+- [GitHub Desktop (GUI für Git)](https://desktop.github.com/)
+- [GitKraken (GUI für Git)](https://www.gitkraken.com/)
