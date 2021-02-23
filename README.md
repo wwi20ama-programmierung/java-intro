@@ -23,7 +23,7 @@
       - [Mau-Mau mit KI](Vorlesungsinhalte/Vorlesung%2023.11.2020/javaintro/maumau/ki)
       - [Weihnachtsmann AG](Vorlesungsinhalte/Vorlesung%2027.11.2020/)
     - **2021**
-      - [Der Hambugrer Hafen](Übungen/Hafen)
+      - [Der Hamburger Hafen](Übungen/Hafen)
 - Exkurse
     - [Strings vs. Basistypen](Exkurse/Strings%20vs.%20Basistypen.md) (Frage vom 07.11.2020)
     - [Variadische Methoden](Exkurse/Variadische%20Methoden.md)
