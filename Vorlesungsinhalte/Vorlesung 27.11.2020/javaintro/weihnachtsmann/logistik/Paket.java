@@ -35,6 +35,7 @@ public class Paket {
 
     public int getGewicht() {
         return this.gewicht;
+
     }
 
     /**
