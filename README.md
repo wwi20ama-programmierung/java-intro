@@ -14,6 +14,7 @@
     - **2021**
       - [19.02.2021](https://github.com/wwi20ama-programmierung/test-repo) (Debugging, Git und GitHub)
       - [22.02.2021](https://github.com/wwi20ama-programmierung/todo-list) (Todo-Listenverwaltung)
+      - [08.03.2021](Vorlesungsinhalte/Vorlesung%2008.03.2021) (Binärsuche)
 - Beispiele und Aufgaben
     - **2020**
       - [Kalender](Vorlesungsinhalte/Vorlesung%2010.11.2020)
