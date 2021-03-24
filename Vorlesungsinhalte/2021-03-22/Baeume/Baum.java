@@ -20,7 +20,7 @@ public class Baum {
     // Suche den Knoten, in dem de steht.
     while (!aktuell.isDummy() && aktuell.de.compareTo(de) != 0) {
       // Wenn de < aktuell.links.de
-      if (de.compareTo(aktuell.links.de) < 0)
+      if (de.compareTo(aktuell.de) < 0)
       {
         aktuell = aktuell.links;
       }
@@ -47,7 +47,7 @@ public class Baum {
     // Suche den Knoten, in den eingefügt werden muss.
     while (!aktuell.isDummy()) {
       // Wenn de < aktuell.links.de
-      if (de.compareTo(aktuell.getLinks().getDe()) < 0)
+      if (de.compareTo(aktuell.getDe()) < 0)
       {
         aktuell = aktuell.getLinks();
       }
