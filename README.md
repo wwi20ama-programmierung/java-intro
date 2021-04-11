@@ -3,6 +3,7 @@
 - Inhaltliche Zusammenfassungen
     - [Java-Basics](Zusammenfassung/Java-Basics.md)
     - [Objektorientierungs-Basics](Zusammenfassung/OOP-Basics.md)
+    - [JavaFX-Basics](Zusammenfassung/JavaFX-Basics.md)
 - Vorlesungsinhalte
     - **2020**
       - [06.11.2020](Vorlesungsinhalte/Vorlesung%2006.11.2020) (Java- und Objektorientierungs-Basics)
