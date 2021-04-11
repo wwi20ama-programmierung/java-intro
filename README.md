@@ -1,4 +1,4 @@
-# Programmierung 1 (Java)
+# Programmierung 1 und 2 (Java)
 ## Inhaltsverzeichnis
 - Inhaltliche Zusammenfassungen
     - [Java-Basics](Zusammenfassung/Java-Basics.md)
