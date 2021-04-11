@@ -18,6 +18,7 @@
       - [26.02.2021](https://github.com/wwi20ama-programmierung/taschenrechner) (Taschenrechner)
       - [08.03.2021](Vorlesungsinhalte/Vorlesung%2008.03.2021) (Binärsuche)
       - [26.03.2021](https://github.com/wwi20ama-programmierung/graphen) (Graphen-Implementierung)
+      - [09.04.2021](https://github.com/wwi20ama-programmierung/javafx-intro) (Einführung in JavaFX)
 - Beispiele und Aufgaben
     - **2020**
       - [Kalender](Vorlesungsinhalte/Vorlesung%2010.11.2020)
