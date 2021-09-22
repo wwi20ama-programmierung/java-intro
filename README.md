@@ -6,27 +6,27 @@
     - [JavaFX-Basics](Zusammenfassung/JavaFX-Basics.md)
 - Vorlesungsinhalte
     - **2020**
-      - [06.11.2020](Vorlesungsinhalte/Vorlesung%2006.11.2020) (Java- und Objektorientierungs-Basics)
-      - [10.11.2020](Vorlesungsinhalte/Vorlesung%2010.11.2020) (Kalender-Beispiel)
-      - [13.11.2020](Vorlesungsinhalte/Vorlesung%2013.11.2020) (Onlineshop-Beispiel)
-      - [20.11.2020](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro) (Mau Mau und Onlineshop-Vererbungs-Beispiel)
-      - [23.11.2020](Vorlesungsinhalte/Vorlesung%2023.11.2020/javaintro) (Mau Mau mit KI, statische und dynamische Polymorphie)
-      - [27.11.2020](Vorlesungsinhalte/Vorlesung%2027.11.2020/) (Weihnachtsmann AG)
+      - [06.11.2020](Vorlesungsinhalte/2020-11-06) (Java- und Objektorientierungs-Basics)
+      - [10.11.2020](Vorlesungsinhalte/2020-11-10) (Kalender-Beispiel)
+      - [13.11.2020](Vorlesungsinhalte/2020-11-13) (Onlineshop-Beispiel)
+      - [20.11.2020](Vorlesungsinhalte/2020-11-20/javaintro) (Mau Mau und Onlineshop-Vererbungs-Beispiel)
+      - [23.11.2020](Vorlesungsinhalte/2020-11-23/javaintro) (Mau Mau mit KI, statische und dynamische Polymorphie)
+      - [27.11.2020](Vorlesungsinhalte/2020-11-27/) (Weihnachtsmann AG)
     - **2021**
       - [19.02.2021](https://github.com/wwi20ama-programmierung/test-repo) (Debugging, Git und GitHub)
       - [22.02.2021](https://github.com/wwi20ama-programmierung/todo-list) (Todo-Listenverwaltung)
       - [26.02.2021](https://github.com/wwi20ama-programmierung/taschenrechner) (Taschenrechner)
-      - [08.03.2021](Vorlesungsinhalte/Vorlesung%2008.03.2021) (Binärsuche)
+      - [08.03.2021](Vorlesungsinhalte/2021-03-08) (Binärsuche)
       - [26.03.2021](https://github.com/wwi20ama-programmierung/graphen) (Graphen-Implementierung)
       - [09.04.2021](https://github.com/wwi20ama-programmierung/javafx-intro) (Einführung in JavaFX)
 - Beispiele und Aufgaben
     - **2020**
-      - [Kalender](Vorlesungsinhalte/Vorlesung%2010.11.2020)
-      - [Onlineshop](Vorlesungsinhalte/Vorlesung%2013.11.2020)
-      - [Mau-Mau](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro/maumau)
-      - [Onlineshop mit Vererbung](Vorlesungsinhalte/Vorlesung%2020.11.2020/javaintro/onlineshop/vererbung)
-      - [Mau-Mau mit KI](Vorlesungsinhalte/Vorlesung%2023.11.2020/javaintro/maumau/ki)
-      - [Weihnachtsmann AG](Vorlesungsinhalte/Vorlesung%2027.11.2020/)
+      - [Kalender](Vorlesungsinhalte/2020-11-10)
+      - [Onlineshop](Vorlesungsinhalte/2020-11-13)
+      - [Mau-Mau](Vorlesungsinhalte/2020-11-20/javaintro/maumau)
+      - [Onlineshop mit Vererbung](Vorlesungsinhalte/2020-11-20/javaintro/onlineshop/vererbung)
+      - [Mau-Mau mit KI](Vorlesungsinhalte/2020-11-23/javaintro/maumau/ki)
+      - [Weihnachtsmann AG](Vorlesungsinhalte/2020-11-27/)
     - **2021**
       - [Der Hamburger Hafen](Übungen/Hafen)
 - Exkurse
